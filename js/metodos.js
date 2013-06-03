@@ -461,7 +461,7 @@
      * @param   comercio.   Array con sus datos.
      */
      
-     function abrirAppInBrowser(){
+     function abrirInAppBrowser(){
             //recojo el comercio pero ni idea de como enviarselo al appInBrowser
                 console.log('contenido de la pagina comercios tras el error '+$('#PaginaComercios').val());
                 var ref = window.open('http://www.yoamotejina.com/prueba/facebook.html', '_blank','location=yes');
