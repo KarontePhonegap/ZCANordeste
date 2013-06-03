@@ -372,7 +372,45 @@
         $('#'+element+' li').not('.oculto').filter(':even').addClass('impar');
     }
 
-    
+//FACEBOOK
+    /**
+     *loginFacebookBrowser.    abre una ventana nueva con una pagina web que permite loguearse en facebook
+     */
+     
+     function loginFacebookBrowser(event){
+            //recojo el comercio pero ni idea de como enviarselo al appInBrowser
+                var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=yes');
+                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+        
+        PararEvento(event);
+     }
+     
+     /**
+      *logoutFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
+      */
+     function logoutFacebookBrowser(event){
+            //recojo el comercio pero ni idea de como enviarselo al appInBrowser
+                var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
+                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+        PararEvento(event);
+     }
+     /**
+      *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
+      */
+     function postearFacebookBrowser(event, comercio){
+            //recojo el comercio pero ni idea de como enviarselo al appInBrowser
+                var ref = window.open('http://www.yoamotejina.com/facebook/post.html?parametro1=' +comercio.NombreComercio, '_blank','location=yes');
+                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+        PararEvento(event);
+     }
+
+
 //DISPOSITIVO Y NOTIFICACIONES    
     /**
      * esMovil. devuelve true si la aplicación se ejecuta en un móvil y false si se
@@ -456,19 +494,6 @@
         return valor; 
     }
     
-    /**
-     *AbrirAppInBrowser.    abre una ventana como un 'childBrowser' y muestra una pagina en la que compartir información a cerca de la aplicacion
-     * @param   comercio.   Array con sus datos.
-     */
-     
-     function abrirInAppBrowser(){
-            //recojo el comercio pero ni idea de como enviarselo al appInBrowser
-                console.log('contenido de la pagina comercios tras el error '+$('#PaginaComercios').val());
-                var ref = window.open('http://www.yoamotejina.com/prueba/facebook.html', '_blank','location=yes');
-                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('exit', function(event) { console.log(event.type); } );
-     }
     /**
      *MostrarAlerta.    ejecuta un pop up con un mensaje.
      * @params  mensaje, titulo, boton

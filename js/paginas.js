@@ -307,7 +307,7 @@ function CargarDetallesComercio(event, Id){
                       $('#galeria-lista').empty();
                       obtenerImagenesComercio(Id);
                       //$('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="publishStory();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
-                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="abrirInAppBrowser();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
+                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+comercio_Actual+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#ContentDiv').hide().fadeIn('fast');	
                       $('#lstNavBarDetalle').hide().fadeIn('fast');
                       $('#favoritobtn a > span').hide().fadeIn('fast');
@@ -365,9 +365,9 @@ function CargarFacebook(event){
                                    '<i class="icon-group iconoF"></i>Zona Comercial Abierta en Facebook'+
                                    '</div>'+
                                    '</a>');
-        $('#fb-login-link').attr({'onclick': 'promptLogin();'});      
+        $('#fb-login-link').attr({'onclick': 'loginFacebookBrowser(event);'});      
 //        $('#fb-login-link').attr({'onclick': 'abrirAppInBrowser();'});      
-        $('#fb-logout-link').attr({'onclick': 'logout();'});    
+        $('#fb-logout-link').attr({'onclick': 'logoutFacebookBrowser(event);'});    
         $('#fb-zca-link').attr({'href': 'http://www.facebook.com/ZcaNordeste'});                       
                                    
                                    $('#contentFacebook').hide().fadeIn('fast');
