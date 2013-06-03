@@ -378,6 +378,7 @@
      */
      
      function loginFacebookBrowser(event){
+                console.log('pagina comercios '+$('#PaginaComercios').val());
                 var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
                 ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
@@ -390,6 +391,7 @@
       *logoutFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
      function logoutFacebookBrowser(event){
+                console.log('pagina comercios '+$('#PaginaComercios').val());
                 var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
                 ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
@@ -400,6 +402,7 @@
       *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
      function postearFacebookBrowser(event, comercio){
+                console.log('pagina comercios '+$('#PaginaComercios').val());
                 var ref = window.open('http://www.yoamotejina.com/facebook/post.html?parametro1=' +comercio.NombreComercio, '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
                 ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
