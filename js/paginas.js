@@ -307,6 +307,7 @@ function CargarDetallesComercio(event, Id){
                       
                       $('#galeria-lista').empty();
                       obtenerImagenesComercio(Id);
+                      console.log(comercio[0]+comercio[1]+comercio[2]);
                       //$('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="publishStory();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+comercio+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#ContentDiv').hide().fadeIn('fast');	
