@@ -255,17 +255,17 @@ function CargarDetallesComercio(event, Id){
         foto_feed ="";
         $.getJSON(urlObtenerComerciosPorId + "?callback=?",{'Id': Id},
                   function(data){
-                      var comercio=new Array();
-                      
+                      var nombre, descripcion, direccion;                      
                       if (data){
                           $.each(data, function(i, item){
                               var nomZona = obtenerNombreZona(item['Zona']);
                               $('#banner').html("<div id='bannerZona' class='bannerZona"+item['Zona']+"'><h1 id='nombreZonah1'>"+nomZona+"</h1></div>");
                               $('#titulodetalle').html(item['NombreComercio']); 
                               comercio_feed=item['NombreComercio'];
-                              
+                              nombre = item['NombreComercio'];
                               if(!esNulo(item['Direccion'])){
                                   contacto='<p><i class="icon-road"></i>'+item['Direccion']+'</br>';
+                                  direccion = item['Direccion'];
                               }
                               if(!esNulo(item['Telefono'])){
                                   contacto+='<a href=tel:'+item['Telefono']+'><i class="icon-phone"></i>'+item['Telefono']+'</a></br>';
@@ -282,11 +282,12 @@ function CargarDetallesComercio(event, Id){
                                       $('#descripcionParrafo').show(); 
                                   $('#descripcionParrafo').html(item['Descripcion']); 
                                   descripcion_feed=item['Descripcion'];
+                                  descripcion = item['Descripcion'];
                               }
                               else{
                                     $('#descripcionParrafo').hide(); 
+                                    descripcion = '';
                               }
-                              comercio=[[item['NombreComercio']],[item['Direccion']],['Descripcion']];
                               
                               if(!esNulo(item['Imagen'])){
                                   $('#imgdetalle').attr({'src': ''+item['Imagen']+''});
@@ -307,9 +308,8 @@ function CargarDetallesComercio(event, Id){
                       
                       $('#galeria-lista').empty();
                       obtenerImagenesComercio(Id);
-                      console.log(comercio[0]+comercio[1]+comercio[2]);
                       //$('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="publishStory();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
-                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+comercio+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
+                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+nombre+direccion+descripcion');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#ContentDiv').hide().fadeIn('fast');	
                       $('#lstNavBarDetalle').hide().fadeIn('fast');
                       $('#favoritobtn a > span').hide().fadeIn('fast');
@@ -370,7 +370,7 @@ function CargarFacebook(event){
         $('#fb-login-link').attr({'onclick': 'loginFacebookBrowser(event);'});      
 //        $('#fb-login-link').attr({'onclick': 'abrirAppInBrowser();'});      
         $('#fb-logout-link').attr({'onclick': 'logoutFacebookBrowser(event);'});    
-        $('#fb-zca-link').attr({'href': 'http://www.facebook.com/ZcaNordeste'});                       
+        $('#fb-zca-link').attr({'onclick': 'verZCAFacebookBrowser(event);});                       
                                    
                                    $('#contentFacebook').hide().fadeIn('fast');
                                    $.mobile.loading('hide');

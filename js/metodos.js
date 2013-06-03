@@ -401,10 +401,7 @@
      /**
       *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
-     function postearFacebookBrowser(event, comercio){
-                var nombre = comercio[0];
-                var direccion = comercio[1];
-                var descripcion = comercio[2];
+     function postearFacebookBrowser(event, nombre, direccion, descripcion){
                 console.log(nombre+direccion+descripcion);
                 var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+nombre+'&direccion='+direccion+'&descripcion='+descripcion, '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
@@ -412,7 +409,14 @@
                 ref.addEventListener('exit', function(event) { console.log(event.type); } );
         PararEvento(event);
      }
-
+    
+    function verZCAFacebookBrowser(event, comercio){
+                var ref = window.open('http://www.facebook.com/ZcaNordeste', '_blank','location=yes');
+                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+        PararEvento(event);
+     }
 
 //DISPOSITIVO Y NOTIFICACIONES    
     /**
