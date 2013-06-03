@@ -7,7 +7,7 @@
     var urlObtenerComerciosPorSector = 			"http://172.16.1.11/WSZCA/serviciosJSON.asmx/ObtenerComerciosPorSector";
     var urlObtenerComerciosPorId= 				"http://172.16.1.11/WSZCA/serviciosJSON.asmx/ObtenerComerciosPorId";
     var urlObtenerImagenesPorComercio = 		"http://172.16.1.11/WSZCA/serviciosJSON.asmx/ObtenerImagenesPorComercio";
-    
+    var comercioFacebook    = null; 
     
     // tutorial
     var textosTutorial = new Array();
@@ -154,7 +154,6 @@ function CargarSectores(event){
                                       var nombreSector=transformarCadena((item2['Nombre'])+"", maxisectores);
                                       $('#lstSectores').append('<li id=sec'+countsectores+'>'+
                                                                '<a href="javascript:;" onClick="CargarComerciosPorSector(event,'+item2['Id']+')">'+
-                                                               <!--'<img id="flecha" src=\'img/iconos/flecha'+anchoImagen+'.png\'>'+-->
                                                                '<h3 id="nombreSector">' + nombreSector + '</h3>'+
                                                                '<span class="ui-li-count">'+item2['numComercios']+'</span>'+
                                                                '</a>'+
@@ -308,8 +307,9 @@ function CargarDetallesComercio(event, Id){
                       
                       $('#galeria-lista').empty();
                       obtenerImagenesComercio(Id);
+                      comercioFacebook = [[nombre],[direccion],[descripcion]];
                       //$('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="publishStory();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
-                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser('+event+','+nombre+','+direccion+','+descripcion+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
+                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event);" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#ContentDiv').hide().fadeIn('fast');	
                       $('#lstNavBarDetalle').hide().fadeIn('fast');
                       $('#favoritobtn a > span').hide().fadeIn('fast');

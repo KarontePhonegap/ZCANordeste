@@ -401,13 +401,14 @@
      /**
       *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
-     function postearFacebookBrowser(event, nombre, direccion, descripcion){
-                console.log($('#PaginaComercios').html());
-                console.log(nombre+direccion+descripcion);
-                var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+nombre+'&direccion='+direccion+'&descripcion='+descripcion, '_blank','location=yes');
-                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+     function postearFacebookBrowser(event){
+                if(!esNulo(comercioFacebook)){
+                    var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+comercioFacebook[0]+'&direccion='+comercioFacebook[1]+'&descripcion='+comercioFacebook[2],'_blank','location=yes');
+                    ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+                    ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+                    ref.addEventListener('exit', function(event) { console.log(event.type); } );
+                    comercioFacebook=null;
+                }
         PararEvento(event);
      }
     
