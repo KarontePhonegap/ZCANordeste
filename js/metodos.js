@@ -402,6 +402,7 @@
       *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
      function postearFacebookBrowser(event, nombre, direccion, descripcion){
+                console.log($('#PaginaComercios').html());
                 console.log(nombre+direccion+descripcion);
                 var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+nombre+'&direccion='+direccion+'&descripcion='+descripcion, '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
