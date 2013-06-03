@@ -1,0 +1,2 @@
+En esta versión se utilizará la API Javascript para facebook
+	- motivo: el plugin de facebook no es compatible con las versiones a partir de 2.0 de phonegap.

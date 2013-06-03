@@ -1,0 +1,100 @@
+/**********************************/
+/*       Banners de la zona       */
+/**********************************/
+    //estado: terminado
+
+@marginbotton:40px;
+
+//Colores Zonas
+@tejina: #F1B7D4 !important;
+@valleguerra: #DEDC00 !important;
+@puntadelhidalgo: #EF9500 !important;
+@bajamar: #B3DEF5 !important;
+
+
+.BannerNormal(@nombreImagen, @ancho, @alto768, @alto640,@alto480, @alto320, @alto240, @colorzona){
+    background: @colorzona url("../img/banners/@{nombreImagen}768.png") no-repeat !important;
+    background-position-x: 95% !important;
+    border:none;
+    display:block;
+    width: @ancho;
+    height: @alto768;
+    margin: none 0 @marginbotton 0;
+    position: relative !important;
+    @media (max-width: 640px){
+       width: @ancho;
+       height: @alto640;
+       background: @colorzona url("../img/banners/@{nombreImagen}640.png") no-repeat !important;
+       background-position-x: 95% !important;
+    }
+    @media (max-width: 480px){
+       width: @ancho;
+       height: @alto480;
+       background: @colorzona url("../img/banners/@{nombreImagen}480.png") no-repeat !important;
+       background-position-x: 95% !important;
+    }
+    @media (max-width: 320px){
+        width: @ancho;
+        height: @alto320;
+        background: @colorzona url("../img/banners/@{nombreImagen}320.png") no-repeat  !important;
+        background-position-x: 95% !important;
+    }
+    @media (max-width: 240px){
+        width: @ancho;
+        height: @alto240;
+        background: @colorzona url("../img/banners/@{nombreImagen}240.png") no-repeat !important;
+        background-position-x: 95% !important;
+    }
+}
+
+.bannerZona4{
+     .BannerNormal("bajamar",          100%, 69px, 58px,47px, 29px,29px, @bajamar);    
+}
+.bannerZona3{
+     .BannerNormal("puntadelhidalgo",  100%, 69px, 58px,47px, 29px,29px ,@puntadelhidalgo);    
+}
+.bannerZona2{
+    .BannerNormal("valleguerra",       100%, 69px, 58px,47px, 29px,29px, @valleguerra);    
+}
+.bannerZona1{
+    .BannerNormal("tejina",            100%, 69px, 58px,47px, 29px,29px, @tejina);
+}
+#PaginaComercios{
+    #nombreZonah1{
+        color: black !important;
+        padding: 25px !important;
+        @media(max-width: 768px){
+            padding: 25px !important;
+        }
+        @media(max-width: 640px){
+            padding: 20px !important;
+        }
+        @media(max-width: 480px){
+            padding: 15px !important;
+        }
+        @media(max-width: 320px){
+            padding: 5px !important;
+            font-size: 15px !important;
+        }
+    }
+}
+
+#PaginaDetalleComercio{
+    #nombreZonah1{
+        color: black !important;
+        padding: 15px !important;
+        @media(max-width: 768px){
+            padding: 15px !important;
+        }
+        @media(max-width: 640px){
+            padding: 15px !important;
+        }
+        @media(max-width: 480px){
+            padding: 10px !important;
+        }
+        @media(max-width: 320px){
+            padding: 5px !important;
+            font-size: 15px !important;
+        }
+    }
+}

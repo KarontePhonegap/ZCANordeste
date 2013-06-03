@@ -1,0 +1,129 @@
+//pagina detalles comercios
+// estado:  
+        @fuentelistaycount768: 40px !important;
+        @fuentelistaycount640: 30px !important;
+        @fuentelistaycount480: 25px !important;
+        @fuentelistaycount320: 15px !important;
+        @fuentelistaycount240: 12px !important;
+        @fuenteparrafodetalle768: 30px !important; //40
+        @fuenteparrafodetalle640: 25px !important; //30
+        @fuenteparrafodetalle480: 20px !important; //30
+        @fuenteparrafodetalle320: 15px !important; //15
+        @fuenteparrafodetalle240: 12px !important;
+.Fuente(@fuente768, @fuente640, @fuente480, @fuente320, @fuente240){
+                font-size: @fuente768 !important;
+                @media(max-width:640px){
+                    font-size: @fuente640 !important;
+                }
+                @media(max-width:480px){
+                    font-size: @fuente480 !important;
+                }
+                @media(max-width:320px){
+                    font-size: @fuente320 !important;
+                }
+                @media(max-width:240px){
+                    font-size: @fuente240 !important;
+                }
+}
+#PaginaDetalleComercio{
+            .ui-content{
+                #titulodetalle{
+                    font-weight: normal !important;
+                    font-size: 40px !important;
+                    .Fuente(@fuentelistaycount768, @fuentelistaycount640, @fuentelistaycount480, @fuentelistaycount320, @fuentelistaycount240);}
+                    line-height: 30pt !important;
+                    @media(max-width: 640px){
+                        line-height: 25pt !important;
+                    }
+                    @media(max-width: 480px){
+                        line-height: 20pt !important;
+                    }
+                    @media(max-width: 320px){
+                        line-height: 15pt !important;
+                    }
+                }
+                #imgdetalle {
+                    max-height: 200px !important;
+                    padding: 5px !important;
+                    @media(max-width: 640px){
+                        max-height: 200px !important;
+                        padding-right: 5px !important;
+                    }
+                    @media(max-width: 480px){
+                        max-height: 160px !important;
+                        padding-right: 5px !important;
+                    }
+                    @media(max-width: 320px){
+                        max-width: 100px !important;
+                        padding-right: 5px !important;
+                    }
+                    @media(max-width: 240px){
+                        max-width: 80px !important;
+                    }
+                }
+                p {.Fuente(@fuenteparrafodetalle768, @fuenteparrafodetalle640, 20px, @fuenteparrafodetalle320, @fuenteparrafodetalle240);
+                }
+                #descripcionParrafo{
+                     .Fuente(25px, @fuenteparrafodetalle640, @fuenteparrafodetalle480, @fuenteparrafodetalle320, @fuenteparrafodetalle240);
+                     clear: both;
+                }
+                #contenidoDetalle p{
+                    margin-top: -20px;
+                }
+                #contenidoDetalle{
+                    @media(max-width: 320px){
+                        clear: both !important;
+                    }
+                }
+                a{ color: white !important;
+                   font-weight: normal !important;
+                   font-size: @fuenteparrafodetalle768 !important;
+                   text-decoration: none !important;
+                   @media(max-width: 640px){font-size: @fuenteparrafodetalle640 !important;}
+                   @media(max-width: 480px){font-size: @fuenteparrafodetalle480 !important;}
+                   @media(max-width: 320px){font-size: @fuenteparrafodetalle320 !important;}
+                   @media(max-width: 240px){font-size: @fuenteparrafodetalle240 !important;}
+                }
+                @media(max-width: 240px){
+                    #bannerZona{
+                        margin-bottom: -10px;
+                    }
+                }
+            }
+#galeria-boton{
+        clear: both;
+        padding: 20px 0 0 0 !important;
+    #galeria-boton-link{
+        .FunGradientes(@gradienteverde1, @gradienteverde2);
+        border-color: white;
+        border-width: 2px !important;
+        border-radius: 5px !important;
+        padding: 5px 15px !important;
+    }
+}
+#fb-boton{
+        clear: both;
+        padding: 20px 0 0 0 !important;
+    #fb-boton-link{
+        .FunGradientes(@gradienteazul1, @gradienteazul2);
+        border-color: white;
+        border-width: 2px !important;
+        border-radius: 5px !important;
+        padding: 5px 15px !important;
+    }
+}
+#galeria-boton-imagen{
+    background-image: url("images/icons-36-white.png");
+    background-position: -244px -28px;
+    width: 36px;
+    height: 36px;
+}
+.icon-facebook-sign{ 
+    margin: 0 0 0 20px;
+}    
+.icon-picture{
+    margin: 0 0 0 20px;
+}
+i{
+    padding: 0 2px;
+}

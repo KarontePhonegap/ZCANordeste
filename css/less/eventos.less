@@ -1,0 +1,172 @@
+/**eventos**/
+    @col_enlaces_amarillo: #FDC32E;
+    @col_enlaces_verde:#89D31E;
+    @col_enlaces_naranja: #F27718;
+    @col_amarillospan: white;
+    @col_tutorial_flechas_azul:#0DA6C9;
+    @col_li_fondo_normal_hover: #46CCB6;
+    @col_li_fondo_impar_hover: #F9E1C0;
+    @gra_btn_hover_verde1: #89D31E;
+    @gra_btn_hover_verde2: #6AA311; 
+    @gra_btn_hover_azul1: #2ECEFF;
+    @gra_btn_hover_azul2: #0DA6C9;
+    @gra_btn_hover_naranja1: #FF991F ;
+    @gra_btn_hover_naranja2: #DB5B14;
+    
+    @tutorial_flechas_borde_top_bottom: 35px solid rgba(0, 0, 0, 0);
+    @tutorial_flechas_borde_top_bottom320: 15px solid rgba(0, 0, 0, 0);
+    @tutorial_flechas_borde_left_right: 65px solid;
+    @tutorial_flechas_borde_left_right320: 25px solid;
+#PaginaInicial, #PaginaDetalleComercio{
+   .ui-content{
+       a:hover{ //enlaces simples
+            color: @col_enlaces_amarillo !important;
+            text-decoration: none !important;
+            span, h3{
+                    color: @col_enlaces_amarillo !important;
+                    text-decoration: none !important;
+            }
+        }
+        .boton-detalle:hover{
+            color: white !important;
+        }
+   }
+   .marcado:hover{
+     //botón favoritos marcado hover
+    .FunGradientes(@gra_btn_hover_azul1 ,@gra_btn_hover_azul2 );
+    background-color: @gra_btn_hover_azul2;
+    }
+    #fb-boton-link:hover{
+         .FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2);
+         background-color: @gra_btn_hover_azul2;
+         color: white;
+    }
+    #galeria-boton-link:hover{
+         .FunGradientes(@gra_btn_hover_verde1 , @gra_btn_hover_verde2);
+         background-color: @gra_btn_hover_azul2;
+         color: white;
+    }
+}
+#PaginaTutorial1, #PaginaTutorial2, #PaginaTutorial3,#PaginaTutorial4  {
+    .ui-content{
+            .fa:hover{ //flecha hacia atrás
+                width: 0 !important;
+                height: 0 !important;
+                border-top: @tutorial_flechas_borde_top_bottom ;
+                border-right:   @tutorial_flechas_borde_left_right @col_tutorial_flechas_azul;
+                border-bottom: @tutorial_flechas_borde_top_bottom;
+                background: none !important;
+                margin-right: 0px;
+                @media(max-width: 320px){
+                    border-top: @tutorial_flechas_borde_top_bottom320 ;
+                    border-right: @tutorial_flechas_borde_left_right320 @col_tutorial_flechas_azul;
+                    border-bottom: @tutorial_flechas_borde_top_bottom320;
+                }
+            }
+            .f:hover{ //flecha hacia delante
+                width: 0 !important;
+                height: 0 !important;
+                border-top: @tutorial_flechas_borde_top_bottom;
+                border-left: @tutorial_flechas_borde_left_right  @col_tutorial_flechas_azul;
+                border-bottom: @tutorial_flechas_borde_top_bottom;
+                @media(max-width: 320px){
+                    border-top: @tutorial_flechas_borde_top_bottom320;
+                    border-left: @tutorial_flechas_borde_left_right320 @col_tutorial_flechas_azul;
+                    border-bottom: @tutorial_flechas_borde_top_bottom320;
+                }
+            }
+            .ch:hover, .c:hover{ //puntos resaltados y normales
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                .FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2);
+                background-color: @gra_btn_hover_azul2;
+            }
+        }
+}
+#PaginaZona,   #PaginaFavoritos{
+    .ui-content{
+        a:hover{ //fondo de lista
+             //background: @col_li_fondo_normal_hover !important;
+             .FunGradientes(rgba(112,234,224,1), rgba(82,174,160,1));
+        }
+        .ui-li:hover{ //fondo de lista
+           // background: @col_li_fondo_normal_hover !important;
+           .FunGradientes(rgba(112,234,224,1), rgba(82,174,160,1));
+        }
+        .ui-btn-text{
+            z-index: 0 !important;
+        }
+    }
+}
+#PaginaSector, #PaginaComercios{
+        .par:hover{ //fondo de lista
+             .FunGradientes(rgba(112,234,224,1), rgba(82,174,160,1));
+             .ui-li:hover{
+                .FunGradientes(rgba(112,234,224,1), rgba(82,174,160,1));
+            }
+        }
+        .impar:hover{ //fondo de lista impar
+            //background: @col_li_fondo_impar_hover !important;
+            .FunGradientes(#FFEBD3, #F7D6A7);
+            .ui-li:hover{
+                //background: @col_li_fondo_impar_hover !important;
+                 .FunGradientes(#FFEBD3, #F7D6A7);
+            }
+        }
+        #divfiltroComercios:hover, #divfiltroSectores:hover{
+            //.FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2);
+            //background-color: @gra_btn_hover_azul2;
+        }
+}
+//#PaginaComercios { //fondo de los elementos lista de comercios
+/*        a:hover{
+            background: @col_li_fondo_normal_hover !important;        
+        }
+        .ui-li:hover{
+            background: @col_li_fondo_normal_hover !important;
+        } 
+}*/
+#PaginaLocalizacion{
+    #cerrarBubble:hover{
+        .FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2);
+    }
+    #enlacetooltip:hover{
+            color: @col_enlaces_verde;
+    }
+}
+#PaginaZona, #PaginaSector, #PaginaComercios, #PaginaDetalleComercio, #PaginaLocalizacion, #PaginaFavoritos, #PaginaDescuentos, #PaginaFacebook{
+   .ui-header{
+       a:hover{
+             .FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2); //hover del botón del header
+             background-color: @gra_btn_hover_azul2;
+        }
+   }
+   .ui-content{
+        .ui-li:hover{
+            .ui-btn-up-c{
+                     .FunGradientes(@gra_btn_hover_azul1 , @gra_btn_hover_azul2); //hover del botón count
+                     background-color: @gra_btn_hover_azul2;
+            }
+        }
+    }
+    .ui-footer{
+       a:hover{
+             .FunGradientes(@gra_btn_hover_naranja1,@gra_btn_hover_naranja2); //hover de los botones del navbar
+             background-color: @gra_btn_hover_azul2;
+        }
+   }
+}
+#PaginaTutorial1, #PaginaTutorial2, #PaginaTutorial3, #PaginaTutorial4 {
+    .ui-header{
+       a:hover{
+           .FunGradientes(@gra_btn_hover_verde1 , @gra_btn_hover_verde2); //hover del botón del header del tutorial
+           background-color: @gra_btn_hover_azul2;
+        }
+   }
+}
+#PaginaFacebook{
+    .fb-btn:hover{
+        .FunGradientes(#25D8D1, #0057F2);
+    }
+}

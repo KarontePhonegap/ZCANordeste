@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.karonte.zcanordeste"
+    version   = "1.0.1">
+
+<name>ZCA nordeste</name>
+
+<description>
+	Zona comercial Abierta del nordeste de tenerife (ZCA nordeste) permite encontrar los locales de la zona, facilita información de los mismos y sus descuentos.
+</description>
+
+<author href="http://www.karonte.es" email="info@karonte.es">
+Karonte. Servicios en Internet. S.L.
+</author>
+
+<!-- Preferencias -->
+<preference name="orientation"             value="portrait" />
+<preference name="android-installLocation" value="preferExternal" />
+<preference name="stay-in-webview"         value="true" />
+<preference name="phonegap-version"        value="2.7.0" /> <!----he cambiado esto----->
+<preference name="target-device" value="universal" />
+<preference name="fullscreen" value="true" />
+<icon src="icon.png"/>
+
+<!-- Iconos -->
+<!-- iOS -->
+<!--
+<icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
+<icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+<icon src="res/icon/ios/Ico114x114.png" gap:platform="ios" width="114" height="114" />
+-->
+
+<!-- Android -->
+<!--
+<icon src="res/icon/android/Ico36x36.png" gap:platform="android" gap:density="ldpi" />
+<icon src="res/icon/android/Ico48x48.png" gap:platform="android" gap:density="mdpi" />
+<icon src="res/icon/android/Ico72x72.png" gap:platform="android" gap:density="hdpi" />
+<icon src="res/icon/android/Ico96x96.png" gap:platform="android" gap:density="xhdpi" />
+-->
+
+<!-- Pantallas de inicio -->
+<!-- iOS -->
+<!--
+<gap:splash src="res/screen/ios/splash_320x480.png" width="320" height="480" />
+<gap:splash src="res/screen/ios/splash_640x960.png" width="640" height="960" />
+-->
+
+<!-- Android -->
+<!--<gap:splash src="appconfig/splash/android/splash320x426.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="appconfig/splash/android/splash320x470.png" gap:platform="android" gap:density="mdpi" />
+<gap:splash src="appconfig/splash/android/splash480x640.png" gap:platform="android" gap:density="hdpi" />
+<gap:splash src="appconfig/splash/android/splash720x960.png" gap:platform="android" gap:density="xhdpi" />-->
+
+ <gap:plugin name="FacebookConnect">
+   <param name="APP_ID" value="377139305740929" />
+ </gap:plugin>
+
+<!-- Android - min sdk -->
+<preference name="android-minSdkVersion" value="9" />
+
+<!-- IOS preferences-->
+<preference name="DisallowOverscroll" value="true" />
+<preference name="UIWebViewBounce" value="false" />
+<!-------------------->
+
+<!-- Acceso a direcciones web -->
+<access subdomains="true" origin="http://intranet.karonte.es"/>
+<access subdomains="true" origin="https://intranet.karonte.es"/>
+
+<access subdomains="true" origin="http://www.yoamotejina.com"/>
+
+<access subdomains="true" origin="http://cbk0.googleapis.com"/>
+<access subdomains="true" origin="http://khm1.googleapis.com"/>
+<access subdomains="true" origin="http://khm0.googleapis.com"/>
+<access subdomains="true" origin="http://mt1.googleapis.com"/>
+<access subdomains="true" origin="http://mt0.googleapis.com"/>
+<access subdomains="true" origin="http://maps.googleapis.com"/>
+<access subdomains="true" origin="http://maps.google.com"/>
+<access subdomains="true" origin="http://maps.gstatic.com"/>
+<access subdomains="true" origin="http://csi.gstatic.com"/>
+<access subdomains="true" origin="https://cbk0.googleapis.com"/>
+<access subdomains="true" origin="https://khm1.googleapis.com"/>
+<access subdomains="true" origin="https://khm0.googleapis.com"/>
+<access subdomains="true" origin="https://mt1.googleapis.com"/>
+<access subdomains="true" origin="https://mt0.googleapis.com"/>
+<access subdomains="true" origin="https://maps.googleapis.com"/>
+<access subdomains="true" origin="https://maps.google.com"/>
+<access subdomains="true" origin="https://maps.gstatic.com"/>
+<access subdomains="true" origin="https://csi.gstatic.com"/>
+
+<access subdomains="true" origin="http://*.facebook.*"/>
+<access subdomains="true" origin="http://m.facebook.com"/>
+<access subdomains="true" origin="http://graph.facebook.com"/>
+<access subdomains="true" origin="http://api.facebook.com"/>
+<access subdomains="true" origin="http://*.fbcdn.net"/>
+<access subdomains="true" origin="http://*.akamaihd.net"/>
+<access subdomains="true" origin="https://*.facebook.*"/>
+<access subdomains="true" origin="https://m.facebook.com"/>
+<access subdomains="true" origin="https://graph.facebook.com"/>
+<access subdomains="true" origin="https://api.facebook.com"/>
+<access subdomains="true" origin="https://*.fbcdn.net"/>
+<access subdomains="true" origin="https://*.akamaihd.net"/>
+<!-- Propiedades habilitadas -->
+<feature name="http://api.phonegap.com/1.0/geolocation"/>
+
+<!-- Plugins necesarios -->
+<!-- Almacenamiento y geolocalización para Android -->
+<plugin name="Storage"             value="org.apache.cordova.Storage" />
+<plugin name="Geolocation"         value="org.apache.cordova.GeoBroker" />
+<plugin name="InAppBrowser"        value="CDVInAppBrowser" />
+</widget>

@@ -1,0 +1,159 @@
+/**********************************/
+/*       botones de la navbar     */
+/**********************************/
+    //estado: terminado
+
+//variables
+    //colores
+        @gradientenaranja1: #FDC32E;
+        @gradientenaranja2: #F27718;
+        @gradienteazul1: #00A3E6;
+        @gradienteazul2: #007FF2;
+    //fuentes
+
+.BotonNavbarNormal(@nombreImagen, @ancho768, @alto768, @ancho640, @alto640, @ancho320, @alto320){
+            border:none;
+            display: inline !important;
+            width: @ancho768 !important;
+            height: @alto768 !important;
+            background: url("../img/navbar/@{nombreImagen}768.png") no-repeat !important;
+            @media (max-width: 640px){
+               width: @ancho640 !important;
+               height: @alto640 !important;
+               background: url("../img/navbar/@{nombreImagen}640.png") no-repeat !important;
+            }
+            @media (max-width: 480px){
+               width: @ancho320 !important;
+               height: @alto320 !important;
+               background: url("../img/navbar/@{nombreImagen}320.png") no-repeat !important;
+            }
+            @media (max-width: 320px){
+                width: @ancho320 !important;
+                height: @alto320 !important;
+                background: url("../img/navbar/@{nombreImagen}320.png") no-repeat !important;
+            }
+            @media (max-width: 240px){
+                width: @ancho320 !important;
+                height: @alto320 !important;
+                background: url("../img/navbar/@{nombreImagen}320.png") no-repeat !important;
+            }
+}
+
+/*************************************************/
+.ui-footer{
+    .ui-btn-text{
+        font-size: 30px !important;
+        @media(max-width: 640px){
+            font-size: 25px !important;
+        }
+        @media(max-width: 480px){
+            font-size: 25px !important;
+        }
+        @media(max-width: 320px){
+            font-size: 15px !important;
+        }
+        @media(max-width: 240px){
+            font-size: 12px !important;
+        }
+    }
+}
+.ui-bar-a { //header
+    .FunGradientes(@gradientenaranja1, @gradientenaranja2);
+    background-color: @gradientenaranja2;
+}
+#PaginaDetalleComercio{
+         #navbar-favorito{
+            .BotonNavbarNormal("favoritoico", 64px, 64px, 48px, 48px, 24px, 24px);
+        }
+        #navbar-mapa{
+            .BotonNavbarNormal("mapaico", 64px, 64px, 48px, 48px, 24px, 24px);
+        }
+        #navbar-favorito, #navbar-mapa{
+            margin-bottom: -20px;
+            @media(max-width: 640px){
+                margin-bottom: -10px;
+            }
+            @media(max-width: 480px){
+                margin-bottom: -3px;
+            }
+        }
+        .ui-navbar li .ui-btn .ui-btn-inner {
+            padding: 5px 0 25px 0 ;
+            @media(max-width: 640px){
+                padding: 5px 0 15px 0 ; 
+            }
+            @media(max-width: 480px){
+                padding: 10px 0 15px 0;
+            }
+            @media(max-width: 320px){
+                padding: 5px 0 10px 0 ;
+            }
+        }
+}
+ #PaginaZona, #PaginaSector{
+        #navbar-porzona{    
+            .BotonNavbarNormal("zonaico", 64px, 64px, 48px, 48px, 24px, 24px);
+        }
+        #navbar-porsector{  
+            .BotonNavbarNormal("sectorico", 64px, 64px, 48px, 48px, 24px, 24px);
+        }
+        #navbar-porzona, #navbar-porsector{
+            margin-bottom: -20px;
+            @media(max-width: 640px){
+                margin-bottom: -15px;
+            }
+            @media(max-width: 480px){
+                margin-bottom: -3px;    
+            }
+        }
+        .ui-navbar li .ui-btn .ui-btn-inner {
+            height: 60px !important;
+            padding: 5px 0 5px 0 !important;
+            @media(max-width: 640px){
+                height: 40px !important;
+                padding: 5px 0 15px 0  !important;
+            }
+            @media(max-width: 480px){
+                height: 20px !important;
+                padding: 10px 0 15px 0  !important;
+            }
+            @media(max-width: 320px){
+                height: 20px !important;
+                padding: 10px 0 15px 0  !important;
+            }
+            @media(max-width: 240px){
+                height: 20px !important;
+                padding: 5px 0 10px 0 !important;
+            }
+        }
+}
+    .marcado { //favorito
+        .FunGradientes(@gradienteazul1, @gradienteazul2);
+        background-color: @gradienteazul2;
+    }
+    .ui-footer , .ui-footer .ui-btn-hover-a {
+        color: #FFFFFF;
+        font-weight: normal;
+        text-align: center !important;
+        text-shadow: none;
+    }
+    .ui-footer{
+        .ui-btn-up-c{ 
+        overflow:visible !important;
+        .FunGradientes(@gradientenaranja1, @gradientenaranja2);
+        border: 1px  #00A3E6 !important;
+        }
+        .ui-btn-up-a, .ui-btn-hover-a{
+            .FunGradientes(@gradientenaranja1, @gradientenaranja2);
+            background-color: @gradientenaranja2;
+            color: #FFFFFF;
+            border: 1px solid #111111;
+            font-weight: normal;
+            line-height: 50%;
+            text-align: center !important;
+            text-shadow: none;
+        }
+        .ui-btn-inner { 
+           border: medium none !important;
+        }
+    }

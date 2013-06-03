@@ -1,0 +1,458 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />        
+        <title>I Love Tejina</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.css">
+        <link rel="stylesheet" type="text/css" href="css/jQueryMobile_ilovetejina.css">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        
+        <link rel="stylesheet" type="text/css" href="photoswipe/photoswipe.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+    </head>
+    <body>
+        <!-- Página Inicial -->
+        <div data-role="page" id="PaginaInicial" data-theme="a">
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <h1 id="lblInicio">INICIO</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a" style="margin-top:5px;">
+                    <!--Inicio-->
+                    <div id="btnOpcionInicio" class="ui-block-a">
+                        <a href="javascript:;" onClick="CargarZonas(event)" onTouchStart="CargarZonas(event)">
+                            <img id="imgOpcionInicio" src="img/transparente.png" />
+                            <span>Inicio</span>
+                        </a>
+                    </div>
+                    <!--Localización-->
+                    <div id="btnOpcionLocalizacion" class="ui-block-b">
+                        <a href="javascript:;" onclick="mostrarMapaGeneral(event);" onTourchStart="mostrarMapaGeneral(event);">
+                            <img id="imgOpcionLocalizacion" src="img/transparente.png"/>
+                            <span>Localizaci&oacute;n</span>
+                        </a>
+                    </div>
+                    <!--Descuentos-->
+                    <div id="btnOpcionDescuentos" class="ui-block-a">
+                        <a href="javascript:;">
+                            <img id="imgOpcionDescuentos" src="img/transparente.png"/>
+                            <span >Descuentos</span>
+                        </a>
+                    </div>
+                    <!--Favoritos-->
+                    <div id="btnOpcionFavoritos" class="ui-block-b">
+                        <a href="javascript:;" onClick="CargarFavoritos(event)" onTouchStart="CargarFavoritos(event)">
+                            <img id="imgOpcionFavoritos" src="img/transparente.png"/>
+                            <span>Favoritos</span>
+                        </a>
+                    </div>
+                    <!--Tutorial-->
+                    <div id="btnOpcionTutorial" class="ui-block-a ">
+                        <a href="javascript:;" onClick="CargarTutorial(event,0)" onTouchStart="CargarTutorial(event,0)">
+                            <img id="imgOpcionTutorial" src="img/transparente.png"/>
+                            <span>Tutorial</span>
+                        </a>
+                    </div>
+                    <div id="btnOpcionFacebook" class="ui-block-b">
+                        <a href="javascript:;" onClick="CargarFacebook(event);" onTouchStart="CargarFacebook(event);">
+                            <img id="imgOpcionFacebook" src="img/transparente.png"/>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!------Pagina Zonas------->
+        <div data-role="page" id="PaginaZona" data-theme="a">
+            <!--header-->
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->
+            <div data-role="content">
+                <ul id="lstZonas" data-role="listview"></ul>
+            </div>
+            <!--footer-->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li class="navbarButton">
+                        	<a href="javascript:;" onClick="CargarZonas(event)" onTouchStart="CargarZonas(event)">
+                        	<img id="navbar-porzona" src="img/transparente.png"/>
+                        	Por Zona
+                        	
+                            </a>
+                        </li>
+                        <li class="navbarButton">
+                            <a href="javascript:;" onClick="CargarSectores(event)" onTouchStart="CargarSectores(event)">
+                                <img id="navbar-porsector" src="img/transparente.png"/>Por sector
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-----Pagina Sector-------->
+        <div data-role="page" id="PaginaSector" data-theme="a">
+            <!--header-->        
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a  id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                    
+            <div data-role="content" id="contenidoSectores">
+                <div id="divfiltroSectores">
+                    <input type="text" id="filtroSectores" onClick="vaciarFiltros()" onKeyUp="filtrarSectores()" value="Introdzca un sector..." />
+                </div>
+                <!--<ul id="lstSectores" onchange="cebra();" data-role="listview"  data-filter="true" data-filter-placeholder="Filtrar sectores..." ></ul>-->
+                <ul id="lstSectores" onchange="cebra();" data-role="listview"></ul>
+            </div>
+            <!--footer-->                    
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li class="navbarButton">
+                            <a href="javascript:;" onClick="CargarZonas(event)" onTouchStart="CargarZonas(event)">
+                                <img id="navbar-porzona" src="img/transparente.png"/>Por Zona
+                            </a>
+                        </li>
+                        <li class="navbarButton">
+                            <a href="javascript:;" onClick="CargarSectores(event)" onTouchStart="CargarSectores(event)">
+                                <img id="navbar-porsector" src="img/transparente.png"/>Por sector
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-----Pagina Comercios-------->
+        <div data-role="page" id="PaginaComercios" data-theme="a">
+            <!--header-->                
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                    
+            <div data-role="content">
+                <div id="bannerZona"></div>
+                <div id="divfiltroComercios">
+                    <input type="text" id="filtroComercios" onKeyUp="filtrarComercios()"  onClick="vaciarFiltros()" value="Introduzca un comercio o dirección..."/>
+                </div>
+                <!--<ul id="lstComercios" data-role="listview" data-filter="true" data-filter-placeholder="Filtrar sectores..."></ul>-->
+                <ul id="lstComercios" data-role="listview"></ul>
+            </div>
+        </div>
+        
+        <!------Pagina detalles del comercio------>
+        <div data-role="page" id="PaginaDetalleComercio" data-theme="a">
+            <!--header-->        
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                  
+            <div id="ContentDiv" data-role="content">
+                <div id="banner">
+                </div>
+                <div id="contenidoDetalle">
+                    <div id="imagenDetalle">
+                        <img id="imgdetalle" style="float: left;"/>
+                    </div>
+                    <div id="resumenComercio">
+                        <h2 id="titulodetalle"></h2>
+                        <p id="contenidodetalle"></p>
+                    </div>
+                </div>
+                <div id="descripcion">
+                    <p id="descripcionParrafo"><p>
+                </div>
+                <div id="galeria-boton">
+                </div>
+                <div id="fb-boton">
+                </div>
+            </div>
+            <!--footer-->                    
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar" id="navBarDetalle">
+                    <ul id="lstNavBarDetalle">
+                        <li id="favoritobtn" class="navbarButton">
+                            <a href="javascript:;" id="favoritolink">
+                                <img id="navbar-favorito" src="img/transparente.png"/>
+                                Favorito
+                            </a>
+                        </li>
+                        <li id="mapabtn" class="navbarButton">
+                            <a href="javascript:;" id="mapalink">
+                                <img id="navbar-mapa" src="img/transparente.png"/>
+                                Ver en mapa
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!--Pagina galeria-lista--->
+        <div data-role="page" id="PaginaGaleria-lista" data-theme="a">
+            <!--header-->        
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                  
+            <div id="ContentDiv" data-role="content">
+                <div id="galeria-div">
+                    <ul id="galeria-lista"></ul>
+            </div>  
+            </div>
+        </div>
+              
+        <!--Pagina galeria-->
+        <div data-role="page" id="PaginaGaleria" data-theme="a">
+            <!--contenido-->                  
+            
+            <div id="ContentDivGaleria" data-role="content">
+                <table>
+                <tr>
+                    <td>
+                        <div id="galeria-contenido">
+                        </div>
+                    </td>
+                </tr>
+                
+                </table>
+            </div>
+            <!--footer-->                    
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar" id="navBarDetalle">
+                    <ul id="galeria-navbar">
+                        <li id="retroceder-btn" class="navbarButton">
+                                <a href="javascript:;" id="retrocederlink">
+                                    <img id="navbar-galeria-retroceder" src="img/transparente.png"/>
+                                    Retroceder
+                                </a>
+                        </li>
+                        <li id="volver-btn" class="navbarButton">
+                                <a href="javascript:;" id="volverlink" onclick="Volver(event);" onTouchStart="Volver(event);" >
+                                    <img id="navbar-galeria-volver" src="img/transparente.png"/>
+                                    Volver
+                                </a>
+                        </li>
+                        <li id="avanzar-btn" class="navbarButton">
+                                <a href="javascript:;" id="avanzarlink">
+                                    Avanzar
+                                    <img id="navbar-galeria-avanzar" src="img/transparente.png"/>
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                
+        
+        <!------Pagina Tutorial1-------------------->
+        <div data-role="page" id="PaginaTutorial1" data-theme="a">
+        	<div data-role="header" data-position="fixed" data-theme="a">
+                <a href="javascript:;" onClick="Inicio(event);" onTouchStart="Inicio(event);"><img id="iniciobtn" src="img/transparente.png"></a><h1 id="lblInicio">Tutorial</h1>
+            </div>
+            <!--contenido-->                    
+            <div id="ContentDiv" data-role="content">
+                <div id="texto" class="imgtextoTutorial1"></div>
+                <div id="imagen" class="imgImagenTutorial1"></div>
+                <div id="marcador">
+                	<a href='javascript:;' onClick='DescargarTutorial(event,0);' onTouchStart='DescargarTutorial(event,posT);'><img class='fa' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial1(event);' onTouchStart='CargarTutorial1(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial2(event);' onTouchStart='CargarTutorial2(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial3(event);' onTouchStart='CargarTutorial3(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial4(event);' onTouchStart='CargarTutorial4(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial(event,1);' onTouchStart='CargarTutorial(event,posT);'><img class='f' src='img/transparente.png'/></a>
+                </div>
+            </div>
+        </div>
+        <!------Pagina Tutorial2-------------------->
+        <div data-role="page" id="PaginaTutorial2" data-theme="a">
+        	<div data-role="header" data-position="fixed" data-theme="a">
+                <a href="javascript:;" onClick="Inicio(event);" onTouchStart="Inicio(event);"><img id="iniciobtn" src="img/transparente.png"></a><h1 id="lblInicio">Tutorial</h1>
+            </div>
+            <!--contenido-->                    
+            <div id="ContentDiv" data-role="content">
+                <div id="texto">ZCA app es una aplicaci&oacute;n para localizar, ver y comprar en los comercios de la Comarca del Nordeste</div>
+                <div id="imagen" class="imgImagenTutorial2"></div>
+                <div id="marcador">
+                	<a href='javascript:;' onClick='DescargarTutorial(event,1);' onTouchStart='DescargarTutorial(event,posT);'><img class='fa' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial1(event);' onTouchStart='CargarTutorial1(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial2(event);' onTouchStart='CargarTutorial2(event);'><img class='ch' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial3(event);' onTouchStart='CargarTutorial3(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial4(event);' onTouchStart='CargarTutorial4(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial(event,2);' onTouchStart='CargarTutorial(event,posT);'><img class='f' src='img/transparente.png'/></a>
+                </div>
+            </div>
+        </div>
+        <!------Pagina Tutorial3-------------------->
+        <div data-role="page" id="PaginaTutorial3" data-theme="a">
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a href="javascript:;" onClick="Inicio(event);" onTouchStart="Inicio(event);"><img id="iniciobtn" src="img/transparente.png"></a><h1 id="lblInicio">Tutorial</h1>
+            </div>
+            <!--contenido-->                    
+            <div id="ContentDiv" data-role="content">
+                <div id="texto">Una gu&iacute;a detallada de comercios, descripci&oacute;n y servicios que ofrecen cada uno de ellos</div>
+                <div id="imagen" class="imgImagenTutorial3"></div>
+                <div id="marcador">
+                	<a href='javascript:;' onClick='DescargarTutorial(event,2);' onTouchStart='DescargarTutorial(event,posT);'><img class='fa' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial1(event);' onTouchStart='CargarTutorial1(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial2(event);' onTouchStart='CargarTutorial2(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial3(event);' onTouchStart='CargarTutorial3(event);'><img class='ch' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial4(event);' onTouchStart='CargarTutorial4(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial(event,3);' onTouchStart='CargarTutorial(event,posT);'><img class='f' src='img/transparente.png'/></a>
+                </div>
+            </div>
+        </div>
+        <!------Pagina Tutorial4-------------------->
+        <div data-role="page" id="PaginaTutorial4" data-theme="a">
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a href="javascript:;" onClick="Inicio(event);" onTouchStart="Inicio(event);"><img id="iniciobtn" src="img/transparente.png"></a><h1 id="lblInicio">Tutorial</h1>
+            </div>
+            <!--contenido-->                    
+            <div id="ContentDiv" data-role="content">
+                <div id="texto">Localiza un comercio, agr&eacute;galo a tus favoritos o mira los negocios que tienes a tu alrededor desde tu m&oacute;vil</div>
+                <div id="imagen" class="imgImagenTutorial4"></div>
+                <div id="marcador">
+                	<a href='javascript:;' onClick='DescargarTutorial(event,3);' onTouchStart='DescargarTutorial(event,posT);'><img class='fa' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial1(event);' onTouchStart='CargarTutorial1(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial2(event);' onTouchStart='CargarTutorial2(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial3(event);' onTouchStart='CargarTutorial3(event);'><img class='c' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial4(event);' onTouchStart='CargarTutorial4(event);'><img class='ch' src='img/transparente.png'/></a>
+                	<a href='javascript:;' onClick='CargarTutorial(event,4);' onTouchStart='CargarTutorial(event,posT);'><img class='f' src='img/transparente.png'/></a>
+                </div>
+            </div>
+        </div>
+        
+        <!------Pagina Favoritos------->
+        <div data-role="page" id="PaginaFavoritos" data-theme="a">
+            <!--header-->                
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                    
+            <div data-role="content">
+                <ul id="lstFavoritos" data-role="listview"></ul>
+            </div>   
+        </div>
+        
+        <!------Pagina Facebook------->
+        <div data-role="page" id="PaginaFacebook" data-theme="a">
+            <!--header-->                
+            <div data-role="header" data-position="fixed" data-theme="a">
+                <a id="volverbtn" href="javascript:;" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a><h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                    
+            <div data-role="content" id="contentFacebook">
+                
+            </div>   
+        </div>
+        
+        <!-----Pagina Localizacion----->
+        <div data-role="page" id="PaginaLocalizacion" data-theme="a">
+            <!--header-->                
+            <div data-role="header" data-position="fixed" data-theme="a" id="HeaderLocalizacion">
+                <a href="javascript:;" id="volverbtn" onClick="Volver(event);" onTouchStart="Volver(event);">Volver</a> <h1 id="lblInicio">INICIO</h1>
+            </div>
+            <!--contenido-->                    
+            <div data-role="content" id="ContenidoMapa">
+                <div id="map_canvas"></div>
+            </div>
+        </div>
+        
+    <!--///Scripts//-->
+        <script src="phonegap.js" type="text/javascript"></script>
+<!--        <script type ="text/javascript" src="cordova-2.3.0.js"></script>-->
+        <script type ="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+        <script type ="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+        
+        <!-- cordova facebook plugin -->
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<!--            /**Nota: esta parte carga todo lo necesario para que funcione FB desde Javascript. El único método de que FB no sea undefined*/-->
+        
+        <!--mapa-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLf_PsXvCZxmVqccnKhRDtxYHTJKWZOF0&sensor=true"></script>
+        <script type ="text/javascript" src="js/infobubble-compiled.js"></script>  
+        
+        <!--photoswipe-->
+        <script type="text/javascript" src="photoswipe/klass.min.js"></script>
+        <script type="text/javascript" src="photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
+        
+        <!--facebook-->
+        
+        <script type ="text/javascript" src="js/paginas.js"></script>
+        <script type ="text/javascript" src="js/metodos.js"></script>
+        <script type ="text/javascript" src="js/database.js"></script>
+        <script type ="text/javascript" src="js/mapa.js"></script>
+        <script type ="text/javascript" src="js/favoritos.js"></script>
+          
+        <script type="text/javascript">
+            //alertas
+                var alert_conexion_mensaje = 'No dispone de conexión a Internet. Compruebe que tiene alguna conexión habilitada en su dispositivo';
+                var alert_conexion_titulo =  'ZCA: sin conexión';
+                var alert_conexion_boton = 'vale';
+            
+            //facebook
+            var titulo_feed, comercio_feed, descripcion_feed, vinculo_feed, foto_feed;
+            titulo_feed=comercio_feed+" - Zona Comercial Abierta" ;
+            vinculo_feed="www.karonte.es";
+            
+            //phonegap
+            var activarPhoneGap = true;
+            if (activarPhoneGap) {
+                document.addEventListener('deviceready', onDeviceReady, false);	
+                console.log("... Activando Phonegap ...")
+            }
+            else {
+                onDeviceReady();	
+                console.log(" ... No se reconoce Phonegap ...")
+            }
+            
+            /**
+             * onDeviceReady.
+             */
+            function onDeviceReady(){
+                $(document).ready(function(){
+                    //facebook init
+                    DetectarDimensiones();
+                    if (activarPhoneGap) {
+                        cambiarImagenesPaginaPrincipal();
+                        navigator.geolocation.getCurrentPosition(geolocationSuccess, geoLocationError);
+                    }
+                    obtenerBD();
+                    if (navigator.userAgent.indexOf("Android") != -1){
+                        //quita los parpadeos de pantalla
+                        $.mobile.defaultPageTransition = 'none';
+                        $.mobile.defaultDialogTransition = 'none'; 
+                    }else{
+                        $.mobile.touchOverflowEnabled = true;	
+                    }
+                   
+                    });
+            }      
+            
+            /**
+             * geolocationSuccess. Se obtienen los datos de la localización actual.
+             * @param   position        datos de la posición encontrada
+             */
+            function geolocationSuccess(position) {
+                latitud  = position.coords.latitude;
+                longitud = position.coords.longitude;
+                console.log('GEOLICATION SUCCESS: latitud'+latitud+'longitud '+longitud);
+                console.log('geolocalizado');
+            }
+            /**
+             * geolocationError. Se ha producido un error al obtener la posición actual
+             * @param   error       datos del error.
+             */
+            function geoLocationError(error) {
+                navigator.notification.alert('Error: ' + error.code + '\nMensaje: ' + error.message + '\n');
+            }
+            
+        </script>
+    </body>
+</html>

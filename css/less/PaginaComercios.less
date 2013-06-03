@@ -1,0 +1,141 @@
+    //margenes:
+        @margenentreimagenycomercio240: 55px !important;
+        @margenentreimagenycomercio320: 80px !important;
+        @margenentreimagenycomercio480: 110px !important;
+        @margenentreimagenycomercio640: 140px !important;
+        @margenentreimagenycomercio768: 150px !important;
+#PaginaComercios {
+        @media(max-width: 240px){
+            .ui-link-inherit{
+                margin-bottom: -10px;
+            }
+        }
+         .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content { //este formato es solo para las imagenes de los comercios
+            max-height: 95px !important;
+            max-width: 130px !important;
+            padding-top: 10px !important;
+            @media(max-width: 640px){
+            }
+            @media(max-width: 480px){
+                max-height: 75px !important;
+                max-width: 100px !important;
+            }
+            @media(max-width: 320px){
+                max-height: 55px !important;
+                padding-top: 4px !important;
+            }
+            @media(max-width: 240px){
+                max-height: 35px !important;
+                padding-top: 0px !important;
+            }
+        }
+        .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+            min-height: 100px !important;
+            padding-left: 1px;
+            @media(max-width: 640px){
+                min-height: 95px !important;
+            }
+            @media(max-width: 480px){
+                min-height: 70px !important;
+            }
+            @media(max-width: 320px){
+                min-height: 40px !important;
+            }
+            @media(max-width: 240px){
+                min-height: 20px !important;
+            }
+        }
+        .ui-li-heading {
+            overflow: visible;
+            margin: 20px 0 0 @margenentreimagenycomercio768 !important;
+            @media(max-width: 640px){
+               margin: 10px 0 0 140px !important;
+            line-height: 30pt;
+            }
+            @media(max-width: 480px){
+                font-size: 22px !important;
+                margin: 0 0 0 @margenentreimagenycomercio480 !important;
+            }
+            @media(max-width: 320px){
+                margin: -15px 0 0 @margenentreimagenycomercio320 !important;
+                font-size: 15px !important;
+            }
+            @media(max-width: 240px){
+               margin: -10px 0 0 55px !important;
+                font-size: 12px !important;
+                width: 130px !important;
+            }
+        }
+        .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+            padding: 5px 5px 10px 0px;
+            display: block;
+            @media(max-width: 480px ){
+                padding: 5px 0px 0px 0px;
+                display: block;
+            }
+            @media(max-width: 240px){
+                padding: 0px 0px 0px 0px;
+                display: block;
+            }
+            
+        }
+        #textoComercio{float:left !important;
+         }
+         #textoKM{clear: both !important;
+                  margin-bottom: none !important;
+         } 
+         h4, h3, #h3, .ui-li-desc{color: white !important;   
+         font-weight: bold;
+         }   
+        .ui-li-desc {
+            font-size: 15px !important;
+            margin-left: @margenentreimagenycomercio768 !important;
+            line-height: 30pt;
+            @media(max-width: 640px){
+                font-size: 15px !important;
+                margin-left: @margenentreimagenycomercio640 !important;
+            }
+            @media(max-width: 480px){
+                font-size: 15px !important;
+                margin-left: @margenentreimagenycomercio480 !important;
+            }
+            @media(max-width: 320px){
+                font-size: 10px !important;
+                margin: -10px 0 0 @margenentreimagenycomercio320 !important;
+            }
+            @media(max-width: 240px){
+                font-size: 10px !important;
+                margin: -25px 0 0 @margenentreimagenycomercio240 !important;
+                width: 130px !important;
+            }
+        }
+        li{ 
+            p {font-size: 20px !important;
+              //margin-top: -30px !important;
+              @media(max-width: 320px){
+                font-size: 13px !important;
+                //margin-top: -30px !important;
+              }
+            }
+        }
+        img{
+            
+        }
+        @media(max-width: 240px){
+            .ui-btn-icon-left > .ui-btn-inner > .ui-icon, .ui-btn-icon-right > .ui-btn-inner > .ui-icon {
+                position: absolute;
+                top: 50%;
+                margin: -9px -60px 0 0 ;
+            }
+        }
+        @media(max-width: 240px){
+            .ui-btn-inner .ui-li{
+            height: 35px !important;
+            }
+        }
+        @media(max-width: 240px){
+            #bannerZona{
+                margin-bottom: 25px !important;
+            }
+        }
+}

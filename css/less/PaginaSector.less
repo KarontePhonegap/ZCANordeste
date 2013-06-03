@@ -1,0 +1,83 @@
+//pagina sector
+// estado:  
+        //variables
+        @fondolistanormal: #53b1a3 !important;
+        @fondolistaimpar: #F9D8A8 !important;
+        @fuentelistaycount768: 35px !important;
+        @fuentelistaycount640: 30px !important;
+        @fuentelistaycount480: 25px !important;
+        @fuentelistaycount320: 15px !important;
+        @fuentelistaycount240: 12px !important;
+.impar{
+    background-color: @fondolistaimpar !important;
+    .ui-li{
+        background-color: @fondolistaimpar !important;
+    }
+}
+#PaginaSector{ 
+    .ui-content{
+        text-align: left !important;
+         color: black !important;       
+        
+        .ui-li-heading {
+            overflow: visible;
+            font-size: 25px;
+            @media(max-width: 640px){
+            }
+            @media(max-width: 480px ){
+                font-size: @fuentelistaycount480 !important;
+            }
+            @media(max-width: 320px){
+                margin: 10px 0 0 -10px !important;
+                font-size: 15px !important;
+            }
+            @media(max-width: 240px){
+               margin: 5px 0 0 -15px !important;
+                font-size: 13px !important;
+            }
+        }
+        h4{color: black !important;            
+        }
+        .ui-li {
+            min-height: 80px !important;
+            @media(max-width: 640px){
+            }
+            @media(max-width: 480px){
+            }
+            @media(max-width: 320px){
+                min-height: 30px !important;
+            }
+            @media(max-width: 240px){
+            }
+    
+        }
+        .ui-li-has-count.ui-li-divider .ui-li-count, .ui-li-has-count .ui-link-inherit .ui-li-count {
+            width: 40px !important;
+            height: 30px !important;
+            margin-top: -20px !important;
+            line-height: 25pt !important;
+            @media(max-width: 640px){
+            }
+            @media(max-width: 480px){
+            }
+            @media(max-width: 320px){
+                width: 30px !important;
+                height: 25px !important;
+                margin-top: -17px !important;
+                line-height: 20pt !important;
+                font-size: 15px !important;
+            }
+            @media(max-width: 240px){
+                width: 20px !important;
+                height: 20px !important;
+                margin-top: -10px !important;
+                line-height: 15pt !important;
+            }
+        }
+        .ui-link-inherit{
+            @media(max-width: 320px){
+                padding: 0 0 0 20px !important;
+            }                
+        }
+    }
+}

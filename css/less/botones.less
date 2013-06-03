@@ -1,0 +1,115 @@
+/* 
+Botones. Esta hoja de estilos contiene la información relacionada con los botones principales
+que aparecen en la aplicación.
+* estado:   terminado
+*/
+
+/*--- CONSTANTES ---*/
+@DiferenciaAltoBoton320: 10px;
+@DiferenciaAltoBoton640: 20px;
+@DiferenciaAltoBoton768: 35px;
+
+/*--- FUENTES ---*/
+//50px, 35px, 20px
+@fuentesbotonesinicio768: 60px !important;
+@fuentesbotonesinicio640: 35px !important;
+@fuentesbotonesinicio480: 35px !important;
+@fuentesbotonesinicio320: 24px !important;
+@fuentesbotonesinicio240: 16px !important;
+/*--- DEFINICIONES LESS ---*/
+.FuenteGrande{
+    font-size: @fuentesbotonesinicio768 !important;
+    @media(max-width:640px){ // Para el iPhone4
+        font-size: @fuentesbotonesinicio640 !important;
+    }
+    @media(max-width:480px){ // Para android comun
+        font-size: @fuentesbotonesinicio480 !important;
+    }
+    @media(max-width:320px){ // Para el iPhone3
+        font-size: @fuentesbotonesinicio320 !important;
+    }
+    @media(max-width:240px){ // Para android pequeño
+        font-size: @fuentesbotonesinicio240 !important;
+    }
+}
+.BotonNormal(@nombreImagen, @ancho768, @alto768, @ancho640, @alto640, @ancho320, @alto320){
+    a{
+        display:block;
+        .FuenteGrande;
+        margin:auto;
+        text-align:center;
+        text-decoration:none;
+        width:100%;
+        padding-top: @DiferenciaAltoBoton768;
+        @media (max-width: 640px){
+            padding-top: @DiferenciaAltoBoton640 !important;   
+        }
+        @media (max-width: 320px){
+            padding-top: @DiferenciaAltoBoton320 !important;
+        }
+    }
+    img {
+        background-repeat:no-repeat;
+        border:none;
+        display:block;
+        margin:auto;
+        text-align:center;
+        background-image: url("../img/btn/@{nombreImagen}768.png");
+        width:@ancho768;
+        height: @alto768;
+        @media (max-width: 640px) { // Para el iPhone4
+            background-image: url("../img/btn/@{nombreImagen}640.png") !important;
+            width: @ancho640 !important;
+            height: @alto640 !important;
+        }  
+        @media (max-width: 320px){  // Para el iPhone3
+            background-image: url("../img/btn/@{nombreImagen}320.png") !important;
+            width: @ancho320 !important;
+            height: @alto320 !important;
+        }
+    }
+    span{
+        clear:both;   
+    }
+    .ui-body-a .ui-link:visited {
+        color: rgb(255, 255, 255) !important;
+    }
+}
+
+/*--- DEFINICIONES DE IDENTIFICADORES ---*/
+#btnOpcionInicio{
+    .BotonNormal("inicio", 149px, 157px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}
+#btnOpcionLocalizacion{
+    .BotonNormal("localizacion", 114px, 160px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}
+#btnOpcionDescuentos{
+    .BotonNormal("descuentos", 143px, 143px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}
+#btnOpcionFavoritos{
+    .BotonNormal("favoritos", 147px, 142px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}
+#btnOpcionTutorial{
+    .BotonNormal("tutorial", 141px, 141px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}
+#btnOpcionFacebook{
+    .BotonNormal("facebook", 141px, 141px, 128px, 128px, 64px, 64px);
+    @media(max-width: 240px){
+    margin-top: -10px !important;
+    }
+}

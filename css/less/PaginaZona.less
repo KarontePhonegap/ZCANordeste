@@ -1,0 +1,129 @@
+//pagina zona
+// estado:  
+        //variables
+        @fondolistanormal: #53b1a3 !important;
+        @fondolistaimpar: #F9D8A8 !important;
+        @fuentelistaycount768: 35px !important;
+        @fuentelistaycount640: 30px !important;
+        @fuentelistaycount480: 25px !important;
+        @fuentelistaycount320: 15px !important;
+        @fuentelistaycount240: 12px !important;
+        
+        @minheightlista768: 80px !important;
+#PaginaZona{ 
+    .ui-content{
+        .ui-btn-icon-left > .ui-btn-inner > .ui-icon, .ui-btn-icon-right > .ui-btn-inner > .ui-icon {
+            @media(max-width: 240px){
+                display: none !important;
+            }
+        }
+        .ui-btn .ui-btn-icon-right .ui-li-has-arrow .ui-li .ui-li-has-count .ui-li-has-thumb .ui-btn-up-a{
+            @media(max-width: 768px){
+                    margin: 15px !important;
+                }
+                @media(max-width: 640px){}
+                @media(max-width: 320px){
+                    margin: 10px !important;
+                    min-height: 50px;
+                }
+                
+        }
+        .ui-btn-text>span{
+            z-index: 5 !important;
+        }
+        .ui-li h3{
+            @media(max-width: 480px){
+                font-size: @fuentelistaycount480 !important;
+            }
+            @media(max-width: 320px){
+                font-size: 15px !important; 
+            }
+            @media(max-width: 240px){
+                font-size: 12px !important; 
+                margin: 15px 0 0 45px !important;
+            }
+         }
+         .ui-li{
+            @media(max-width: 240px){
+                padding: 0px 0 0px 0 !important;
+                margin: 10px 5px !important;
+            }
+         }
+        color: white !important;
+            .ui-btn-text{
+                @media(max-width: 480px){
+                    font-size: 22px;
+                }
+                @media(max-width: 320px){
+                    font-size: 15px;
+                }
+            }
+            .ui-li-heading {
+                display: block;
+                font-weight: bold;
+                overflow: visible !important;
+                white-space: nowrap;
+                margin: 30px 0 0 50px !important; 
+                @media(max-width: 640px){
+                    margin: 20px 0 0 35px !important;
+                }
+                @media(max-width: 480px){
+                    margin: 20px 0 0 30px !important;
+                }
+                @media(max-width: 320px){
+                     margin: 15px 0 0 0px !important;
+                }
+                @media(max-width: 240px){
+                    margin-top: 5px !important;
+                }
+            }
+            .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content {
+                float: left;
+                margin: 10px 0 0 10px;
+                @media(max-width: 640px){
+                    margin: 10px 0 0 5px !important;
+                }
+                @media(max-width: 480px){
+                    margin: 10px 0 0 5px !important;
+                }
+                @media(max-width: 320px){
+                    margin: 10px 0 0 5px !important;
+                }
+                @media(max-width: 240px){
+                    margin: 7px 0 0 0px !important;
+                }
+            }
+    
+        .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { //768, 640
+            
+            min-height: @minheightlista768 !important;
+                padding-left: 60px !important;
+            @media(max-width: 640px){
+                min-height: 70px !important;                
+            }
+            @media(max-width: 480px){
+                min-height: 70px !important;
+                }
+            @media(max-width: 320px){
+                min-height: 50px !important;    
+            }
+        }
+        .ui-li-has-arrow.ui-li-has-count .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow.ui-li-has-count { //768, 640
+            padding-left: 50px !important;
+            @media(max-width: 320px){
+                padding: 0px 15px 5px 15px;
+            }
+            @media(max-width: 240px){
+                padding: 0px 0px 0px 0px !important;
+            }
+        }
+        .ui-link-inherit{
+            margin: -5px 0 5px 0 !important;
+            @media(max-width: 320px){
+                width: 80%;
+                margin: -5px !important;
+            }
+        }
+        
+    }
+}

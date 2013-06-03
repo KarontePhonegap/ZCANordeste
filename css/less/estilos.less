@@ -1,0 +1,219 @@
+/* IMPORTACIONES */
+@import "botones.less";
+@import "fondos.less";
+@import "fuentes.less";
+@import "banners.less";
+@import "listas.less";
+@import "navbar.less";
+@import "eventos.less";
+@import "galeria.less";
+
+@import "PaginaComercios.less";
+@import "PaginaDetalleComercio.less";
+@import "PaginaLocalizacion.less";
+@import "PaginaSector.less";
+@import "PaginaTutorial.less";
+@import "PaginaZona.less";
+@import "PaginaFacebook.less";
+
+/*Fuente listas default*/
+@fuente768: 40px !important;
+@fuente640: 30px !important;
+@fuente320: 20px !important;
+@h2768: 30px !important; //50
+@h2640: 20px !important; //35
+@h3320: 15px !important; //?
+/*Fuente parrafo*/
+.Fuente(@fuente768,@fuente640,@fuente320){
+        font-size: @fuente768;
+        @media(max-width:640px){
+            font-size: @fuente640;
+        }
+        @media(max-width:320px){
+            font-size: @fuente320;
+        }
+    }
+.FuenteParrafo{
+        font-size: 25px !important;
+        @media(max-width:640px){
+            font-size: 15px !important;
+        }
+        @media(max-width:320px){
+            font-size: 12px !important;
+        }
+}
+/* COLORES */
+@ColorBlanco:#ffffff;
+
+/* VARIOS */
+@SombraTexto: #000000 2px 2px 5px;
+
+.MostrarEniPhone3(@ancho: 320px){
+    display:none;
+    @media (max-width: @ancho) {
+        display:block;
+    }
+}
+.MostrarEniPhone4(@ancho: 640px){
+    display:none;
+    @media (max-width: @ancho) {
+        display:block;
+    }
+}
+.MostrarEniPad(@ancho:768px){
+    display:none;
+    @media (max-width: @ancho) {
+        display:block;
+    }
+}
+.OcultarEniPad(@ancho:768x){
+     @media (max-width: @ancho) {
+        display:none !important;
+    }
+}
+.RedondearBordes(@dimension:30px){
+    border-radius: @dimension;
+    @media(max-width:640px){
+        border-radius: (@dimension * 0.75) !important;
+    }
+    @media(max-width:320px){
+        border-radius: (@dimension * 0.5) !important;
+    }
+}
+.SombraCapa(@radius:10px){
+    color:#444;
+    -webkit-box-shadow: @radius @radius @radius rgba(0, 0, 0, 1);
+    -moz-box-shadow: @radius @radius @radius rgba(0, 0, 0, 1);
+    box-shadow: @radius @radius @radius rgba(0, 0, 0, 1);   
+}
+
+/* DEFINICIÓN DE ETIQUETAS HTML */
+body{
+    background:#1a3935  no-repeat top left !important;
+}
+h2{
+    @media(max-width:768px){
+        font-size: @h2768 !important;
+    }
+    @media(max-width:640px){
+        font-size: @h2640 !important;
+    }
+}
+h4{
+    @media(max-width:768px){
+        font-size: 35px !important;
+    }
+    @media(max-width:640px){
+        font-size: 28px !important;
+    }
+}
+li{
+    h3{
+        .Fuente(30px,20px,12px);
+    }
+    p{
+        margin-top: 2px !important;
+       .FuenteParrafo;
+    }
+}
+
+/* DEFINICIÓN DE IDENTIFICADORES DE ELEMENTOS */
+
+
+/* DEFINICIÓN DE CLASES */
+.bordeImagen{
+    float:left;
+    width:45%;
+    @media(max-width:768px){
+        margin: 12px;
+    }
+    @media(max-width:640px){
+        margin: 8px;
+    }
+    @media(max-width:320px){
+        margin:4px;
+    }
+}
+.centrado{
+    text-align:center;
+}
+.conSombra{
+    .SombraCapa(10px);   
+}
+.limpiar{
+    clear:both;   
+}
+
+
+/*--- REESCRITURA DE LAS CLASES JQUERYMOBILE ---*/
+a.ui-btn-left{      // Botón superior
+    margin-top: 5px;  
+    @media(max-width:640px){
+        margin-top: 2px !important;   
+    }
+    @media(max-width:320px){
+        margin-top: 2px !important;
+    }  
+    span{
+        &.ui-btn-inner{
+            padding: 20px 20px 20px 30px;
+            @media
+            (max-width:640px){
+                padding: 10px 10px 10px 20px !important;
+            }   
+            @media(max-width:320px){
+                padding: 5px 5px 5px 25px !important;
+            }
+        }
+        &.ui-btn-text{
+            font-size: 20px;
+            @media(max-width:640px){
+                font-size: 25px !important;
+            }
+            @media(max-width:320px){
+                font-size: 12px !important;
+            }
+        }
+    }
+}
+.ui-header{
+    height:80px;
+    @media (max-width: 640px){
+        height:60px !important;
+    }
+    @media (max-width: 320px){
+        height:40px !important;
+    }
+}
+.ui-li-count{
+     .Fuente(30px,20px,12px);
+}
+.ui-title{
+    min-height:0 !important;
+    font-size: 2em !important;
+    padding:10px !important;   
+    @media (max-width:640px){
+        font-size: 1.5em !important;
+        padding: 8px !important;
+    }
+    @media (max-width:320px) {
+        font-size: 1.2em !important;
+        padding: 1px !important;
+    }
+}
+/*Header*/
+.ui-corner-tl, .ui-corner-tr, .ui-corner-bl, .ui-corner-br, .ui-corner-top, .ui-corner-bottom, .ui-corner-right, .ui-corner-left, .ui-corner-all, .ui-btn-corner-tl, .ui-btn-corner-tr, .ui-btn-corner-bl, .ui-btn-corner-br, .ui-btn-corner-top, .ui-btn-corner-bottom, .ui-btn-corner-right, .ui-btn-corner-left, .ui-btn-corner-all{background-clip: none !important;}
+a.ui-btn-left span.ui-btn-inner{padding: 2px 2px 2px 2px !important;
+}
+
+.ui-mobile, .ui-mobile .ui-page {
+    @media(max-width: 240px){
+        min-height: 300px;
+    }
+}
+.ui-page{
+    height: 100% !important;
+}
+.ui-content{
+    height: 100% !important;
+}

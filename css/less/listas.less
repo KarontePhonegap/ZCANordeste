@@ -1,0 +1,423 @@
+/*--- REDIFICIÓN DE ESTILOS JQUERYMOBILE ---*/
+/*********************************/
+/*        Vista de Lista         */
+/*********************************/
+// 
+/*Variables*/
+    //colores
+        @gradientemarillo1: #FDC32E;
+        @gradienteamarillo2: #F27718;
+        @gradienteazul1: #00A3E6;
+        @gradienteazul2: #007FF2;
+        @gradienteazulmarino1: rgba(46,166,252,1);
+        @gradienteazulmarino2: rgba(4,103,174,1);
+        @gradienteverde1: #56B038;
+        @gradienteverde2: #058B19;
+        
+        @fondolistanormal: #53b1a3 !important;
+        @fondolistaimpar: #F9D8A8 !important;
+    //fuentes
+    
+        @fuentelistaycount640: 30px !important;
+        @fuentelistaycount480: 25px !important;
+        @fuentelistaycount320: 15px !important;
+        @fuentelistaycount240: 12px !important;
+        @fuentenavbar768: 25px !important;
+        @fuentenavbar640: 20px !important;
+        @fuentenavbar480: 20px !important;
+        @fuentenavbar320: 20px !important;
+        @fuentenavbar240: 12px !important;
+        @fuentebotonesincio768: 60px !important;
+        @fuentebotonesinicio640: 45px !important;
+        @fuentebotonesinicio480: 45px !important;
+        @fuentebotonesinicio320: 24px !important;
+        @fuentebotonesinicio240: 16px !important;
+        @fuentesubtitulo768: 50px !important;
+        @fuentesubtitutlo640: 45px !important;
+        @fuentesubtitutlo480: 45px !important;
+        @fuentesubtitulo320: 30px !important;
+        @fuentesubtitulo240: 15px !important;
+        @fuenteparrafo768: 20px !important; //40
+        @fuenteparrafo640: 20px !important; //30
+        @fuenteparrafo480: 20px !important; //30
+        @fuenteparrafo320: 15px !important; //15
+        @fuenteparrafo240: 12px !important;
+
+    //margenes:
+        @margenentreimagenycomercio240: 55px !important;
+        @margenentreimagenycomercio320: 100px !important;
+        @margenentreimagenycomercio480: 110px !important;
+        @margenentreimagenycomercio640: 140px !important;
+        @margenentreimagenycomercio768: 150px !important;
+/********/
+
+/* funciones */
+.Fuente(@fuente768, @fuente640, @fuente480, @fuente320, @fuente240){
+        font-size: @fuente768;
+        @media(max-width: 640px){
+            font-size: @fuente640 !important;
+        }
+        @media(max-width: 480px){
+            font-size: @fuente480 !important;
+        }
+        @media(max-width: 320px){
+            font-size: @fuente320 !important;
+        }
+        @media(max-width: 240px){
+            font-size: @fuente240 !important;
+        }
+}
+
+ .FunGradientes(@inicio,@fin){
+            /* Safari 5.1+, Chrome 10+ */
+            background:         -webkit-linear-gradient(top, @inicio, @fin) !important;
+            background-image:   -webkit-linear-gradient(top, @inicio, @fin) !important;
+            background:         -webkit-gradient(linear, 0% 0%, 0% 100%, from(@inicio), to(@fin)) !important;
+            background-image:   -webkit-gradient(linear, 0% 0%, 0% 100%, from(@inicio), to(@fin)) !important;
+            /* Firefox 3.6+ */ 
+            background: -moz-linear-gradient(top, @inicio, @fin) !important;
+            background-image: -moz-linear-gradient(top, @inicio, @fin) !important;
+            /* Opera 11.10+ */ 
+            background: -o-linear-background(top, @inicio, @fin) !important;
+            background-image: -o-linear-background(top, @inicio, @fin) !important;
+            /* IE 10 */        
+            background: -ms-linear-background(top, @inicio, @fin) !important;
+            background-image: -ms-linear-background(top, @inicio, @fin) !important;
+            /* estándar */     
+            background: linear-background(top, @inicio, @fin) !important;
+            background-image: linear-background(top, @inicio, @fin) !important;
+            background-color: @fin; 
+    }
+/*********/
+ul{
+    .ui-btn-up-a, .ui-btn-hover-a {
+        background-color: @fondolistanormal; 
+    }
+}
+.ui-li{  //estilo principal de la lista
+    background: @fondolistanormal none !important; 
+    border: none !important;
+    text-align: left !important; 
+    margin: 15px !important;
+    text-shadow: none !important; 
+    @media(max-width: 640px){
+        margin: 15px !important;
+    }
+    @media(max-width: 480px){
+        padding: 0px 0 0px 0 !important;
+        margin: 10px !important;
+    }
+    @media(max-width: 320px){
+        padding: 2px 0 2px 0 !important;
+        margin: 5px !important;
+    }
+    .ui-link-inherit{
+        text-align:left !important;   
+        text-shadow:none !important;
+     }
+    h3{                                                    //dejo la de 640 porque no me interesa cambiarla
+      .Fuente(@fuentelistaycount768, @fuentelistaycount640,@fuentelistaycount640, @fuentelistaycount320, @fuentelistaycount240);
+      font-weight: bold;
+    }
+}
+    .ui-body-a, .ui-overlay-a {
+            color: #FFFFFF;
+            font-weight: normal;
+    }
+    .ui-body-a .ui-link {
+        color: #FFFFFF;
+        line-height: 120%;
+        text-align: left;
+        font-size: @fuenteparrafo768;
+        @media(max-width: 640px){
+            font-size: @fuenteparrafo640;
+        }
+        @media(max-width: 640px){
+            font-size: @fuenteparrafo480; 
+        }
+        @media(max-width: 320px){
+            font-size: @fuenteparrafo320; 
+        }
+        @media(max-width: 240px){
+            font-size: @fuenteparrafo240;
+        }
+        
+    }
+    //contenido
+    .ui-content {
+           border-width: 0;
+           overflow-x: hidden;
+           overflow-y: visible;
+           padding: none !important;
+    }
+    //enlaces del cuerpo
+    .ui-body-a, .ui-dialog.ui-overlay-a {
+        text-align: left;
+        font-weight: normal;
+    }
+    #PaginaFavoritos{
+        .ui-li-heading {
+            overflow: visible;
+        }
+        @media(max-width: 240px){
+            .ui-link-inherit{
+                margin: -10px 0 0 -10px;
+            }
+        }
+}
+//barra filtro----------------------
+    //a mano
+    #divfiltroSectores{
+        margin: 15px 0px 30px 0px !important;
+        @media(max-width: 320px){
+        	height: 30px;
+            margin-top: 0px !important;
+	    }
+	    @media(max-width: 240px){
+		    margin: -5px -8px 20px -8px !important;
+            padding-bottom: 5px !important;
+            height: 10px;
+	    }
+    }
+    #divfiltroComercios{
+        margin: 15px 0px !important;
+        @media(max-width: 320px){
+        	height: 30px;
+    	}
+    	@media(max-width: 240px){
+    		max-height: 20px;
+    		margin: -20px 5px 15px 5px !important;
+    	}
+    }
+    #divfiltroSectores, #divfiltroComercios{
+        padding: 15px !important;
+         .FunGradientes(@gradienteazulmarino1, @gradienteazulmarino2);
+         background-color: @gradienteazul2;
+         @media(max-width: 240px){
+            height: 10px !important;    
+        }
+         input{
+            background: #FFF !important;
+            color: #000 !important;
+            border: none !important;
+            border-radius: 5px !important;
+            @media(max-width: 320px){
+            	margin: 0px 0px 5px 0px;
+	        	font-size: 12px;
+        	}
+	        @media(max-width: 240px){
+		        margin: -8px;
+	        	width: 190px;
+	        	font-size: 11px;
+        	}
+        }
+    }    
+//-----------------------------------
+        
+//Contador de comercios-----------------------------------
+    .ui-btn-up-c{
+            .FunGradientes(@gradienteazul1, @gradienteazul2);
+            background-color: @gradienteazul2;
+            color: #FFFFFF;
+            border-color: #FFF !important;
+            border-width: 2px;
+            .Fuente(@fuentenavbar768, @fuentenavbar640, @fuentenavbar480, @fuentenavbar320, @fuentenavbar240);
+            font-weight: normal;
+            text-align: center;
+            text-shadow: none;
+            overflow: visible !important;
+    }
+    .ui-li-has-count.ui-li-divider .ui-li-count, .ui-li-has-count .ui-link-inherit .ui-li-count {
+                width: 60px !important;
+                height: 40px !important;
+                margin-top: -28px !important;
+                line-height: 30pt !important;
+                font-size: @fuentelistaycount768;
+             @media (max-width: 640px){
+                width: 40px !important;
+                height: 30px !important;
+                margin-top: -23px !important;
+                line-height: 25pt !important;
+                font-size: @fuentelistaycount640;
+            }
+            @media (max-width: 480px){
+                width: 40px !important;
+                height: 30px !important;
+                margin-top: -22px !important;
+                line-height: 25pt !important;
+                font-size: @fuentelistaycount480;
+            }
+            @media(max-width: 320px){
+                width: 30px !important;
+                height: 25px !important;
+                margin-top: -20px !important;
+                line-height: 20pt !important;
+                 font-size: @fuentelistaycount320 !important;
+            }
+            @media(max-width: 240px){
+                width: 20px !important;
+                height: 20px !important;
+                margin-top: -20px !important;
+                line-height: 15pt !important;
+                font-size: @fuentelistaycount240;
+            }
+            
+    }
+    .ui-li-count {
+        @media(max-width: 320px){
+            font-size: @fuentelistaycount320;
+        }
+    }
+    .ui-btn-corner-all {
+        -moz-border-radius: 25px;
+        -webkit-border-radius: 25px;
+        border-radius: 25px;
+    }
+    .ui-li-has-arrow.ui-li-has-count .ui-li-count {
+        right: 40px !important;
+        @media(max-width: 640px){
+             right: 40px !important;
+        }
+        @media(max-width: 480px){
+            right: 40px !important;
+        }
+        @media(max-width: 320px){
+             right: 25px !important;
+        }
+        @media(max-width: 240px){
+             right: 0px !important;
+             margin-top: -15px !important;
+        }
+    }
+    #flecha{
+        background: url('../img/iconos/flecha.png') no-repeat !important;
+        border: none;
+        display: inline !important;
+        right: 30px !important;
+        padding-top: 35px !important;
+    }
+    #PaginaComercios{
+        .ui-btn-icon-left > .ui-btn-inner > .ui-icon, .ui-btn-icon-right > .ui-btn-inner > .ui-icon {
+            @media(max-width: 320px){
+                margin: -9px -65px;
+            }
+        }
+    }
+    .ui-btn-icon-right .ui-icon {
+            @media(max-width: 320px){
+                right: 0px !important;
+            }
+        }           
+//Boton volver-----------------------------
+.ui-header{
+    .ui-btn-up-a, .ui-btn-hover-a{//solo hace efecto fuera de volverbtn
+            .FunGradientes(@gradienteazul1, @gradienteazul2);
+            background-color: @gradienteazul2;
+            color: #FFFFFF;
+                                                        //dejo la de 640 no me interesa cambiarla    
+            .Fuente(@fuentenavbar768, @fuentenavbar640, @fuentenavbar480, @fuentenavbar320, @fuentenavbar240);
+            font-weight: normal;
+            line-height: 50%;
+            text-align: center;
+            text-shadow: none;
+            border-width: 2px;
+            overflow: visible !important;
+    }
+}
+    #volverbtn{
+         border-color: #FFF !important;
+         width: 130px !important;
+         height: 50px !important;
+         margin-top: 10px !important;
+         line-height: 20pt !important;
+         @media(max-width: 640px){
+             width: 100px !important;
+             height: 40px !important;
+             margin-top: 5px !important;
+             line-height: 20pt !important;
+         }
+         @media(max-width: 480px){
+            width: 100px !important;
+            height: 35px !important;
+            margin-top: 5px !important;
+            line-height: 10pt !important;
+         }
+         @media(max-width: 320px){
+            width: 70px !important;
+            height: 25px !important;
+            margin-top: 2px !important;
+            line-height: 10pt !important;
+         }
+         @media(max-width: 240px){
+                height: 25px !important;
+                line-height: 10pt !important;
+                margin-top: 2px !important;
+                width: 60px !important;
+         }
+         .ui-btn-text{
+            font-size: @fuentelistaycount768;
+            line-height: 45px !important;
+            @media(max-width: 640px){
+                font-size: @fuentelistaycount640;
+                line-height: 35px !important;
+            }
+            @media(max-width: 480px){
+                font-size: @fuentelistaycount480;
+                line-height: 30px !important;
+            }
+            @media(max-width: 320px){
+                font-size: @fuentelistaycount320;
+                line-height: 20px !important;
+            }
+            @media(max-width: 240px){
+                font-size: @fuentelistaycount240;
+                line-height: 20px !important;
+            }
+        }
+    }
+    
+    .ui-btn-inner {
+        border-top: medium none !important;
+        //margin: 3px 10px !important;
+    }
+    #PaginaZona, #PaginaSector, #PaginaComercios, #PaginaDetalleComercio, #PaginaFavorito, #PaginaLocalizacion{
+        .ui-mobile .ui-btn-left, .ui-mobile .ui-btn-right {
+                margin: 15px 0px 0px 15px;
+                @media (max-width:640px){
+                    margin: 10px 0px 0px 10px !important;
+                }
+                @media (max-width:320px) {
+                    margin: 5px 0px 5px 0px !important;
+                }
+        }
+    }
+    .ui-content {
+        @media(max-width: 240px){
+            #PaginaInicial{
+                border-width: 0;
+                overflow: visible;
+                overflow-x: hidden;
+                padding: 5px 0px 0px 0px;
+            }
+        }
+    }
+#PaginaInicial{
+    @media(max-width: 240px){
+        .ui-content {
+            padding: 10px;
+        }
+    }
+}
+#PaginaComercios{
+    .ui-content .ui-listview {
+            margin: 0 -15px;
+            @media(max-width: 240px){
+                margin: -10px 0px 0px 0px;
+            }
+    }
+    .ui-content{
+        @media(max-width: 240px){
+            padding: 5px 5px 0 5px;
+        }
+    }
+}

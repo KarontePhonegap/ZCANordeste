@@ -1,0 +1,135 @@
+/*****************************/
+/********Localización*********/
+/*****************************/
+//  estado: TERMINADO
+@fuenteparrafo768: 15px !important;
+@fuenteparrafo640: 12px !important;
+@fuenteparrafo320: 10px !important;
+@fuenteparrafo320: 10px !important;
+
+        @gradienteazul1: #00A3E6;
+        @gradienteazul2: #007FF2;
+        @gradientebeig1: #F7E1C4;
+        @gradientebeig2: #F2C891;
+        
+.phoney {
+        .FunGradientes(@gradientebeig1, @gradientebeig2);
+        border-radius: 10px !important;
+      }
+#map_canvas{
+    background-color: #E5E3DF;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 100% !important; 
+    height: 100% !important; //1024
+}
+#tooltip{
+         #enlacetooltip{
+            color: #599716  !important;
+            font-size: @fuenteparrafo768 !important;
+            @media(max-width: 640px){
+                font-size: @fuenteparrafo640 !important;
+            }
+            @media(max-width: 480px){
+                font-size: @fuenteparrafo640 !important;
+            }
+            @media(max-width: 320px){
+                font-size: @fuenteparrafo320 !important;
+            }
+            @media(max-width: 240px){
+                font-size: @fuenteparrafo240 !important;
+            }
+        }
+        
+        #cerrarBubble {
+            margin: 5px 5px 0 0 !important;
+            float: right !important;
+            height: 20px;
+            width: 20px !important;
+            font-size: 12px !important;
+            font-weight: bold !important;
+            font-family: tahoma !important;
+            color: white !important;
+            text-decoration: none !important;
+            text-align: center !important;
+            border-radius: 5px 5px 5px 5px !important;
+            border: 2px solid #FFFFFF;
+            .FunGradientes(@gradienteazul1,@gradienteazul2);
+            @media(max-width: 240px){
+                margin: 2px 2px 0 0 !important;
+                height: 15px;
+                text-align: center !important;
+                width: 15px !important;
+                font-size: 8px !important;
+                border: 1px solid #FFF;
+            }
+        }
+}
+    
+#titulodiv{
+    clear: both !important;
+    margin: 0 0 0 5px !important;
+}
+#parrafotooltip{
+    margin: 0px !important;
+}
+#detallescomercio{
+        float: left !important;
+        width: 180px !important;
+        @media(max-width: 480px){
+            width: 130px !important;
+        }
+        @media(max-width: 320px){
+            width: 110px !important;
+        }
+        @media(max-width: 240px){
+            width: 90px !important;
+        }
+}
+#PaginaLocalizacion {
+        color: black !important;
+        h3{
+          font-size: 20px !important;
+          text-shadow: none!important;
+          @media(max-width: 640px){font-size: 18px !important;}
+          @media(max-width: 480px){font-size: 12px !important;}
+          @media(max-width: 320px){font-size: 12px !important;}    
+        }
+        
+        p{font-size: @fuenteparrafo768 !important;
+          line-height: 10pt !important;
+          text-shadow: none!important;
+          @media(max-width: 640px){font-size: @fuenteparrafo640 !important;}
+          @media(max-width: 480px){font-size: @fuenteparrafo640 !important;}
+          @media(max-width: 320px){font-size: @fuenteparrafo320 !important;
+                                   line-height: 10px !important;}
+        }
+        a{
+            color: #FFF !important;
+            font-weight: normal !important;
+            font-size: 10px !important;
+            text-decoration: none !important;
+        }
+    #miniatura 
+        {   float: left !important;
+            img {  max-width: 130px !important;
+                max-height: 100px !important;
+                margin: 0 5px 0 5px !important;
+                border: 2px solid #FFFFFF;
+                @media(max-width: 640px){
+                    max-width: 100px !important;
+                    max-height: 100px !important;
+                    margin: 0 5px 0 5px !important;
+                }
+                @media(max-width: 320px){
+                    max-width: 50px !important;
+                    max-height: 50px !important;
+                    margin: 0 5px 0 5px !important;
+                }
+            }
+    }      
+}
+#ConenidoMapa{
+    height: 100% !important; 
+}

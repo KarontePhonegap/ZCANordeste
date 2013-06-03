@@ -1,0 +1,294 @@
+/*************************/
+/********Tutorial*********/
+/*************************/
+//estado: terminado
+
+//variables
+    @fuentetutorial768: 40px !important;
+    @fuentetutorial640: 35px !important;
+    @fuentetutorial480: 30px !important;
+    @fuentetutorial320: 20px !important;
+    @fuentetutorial240: 15px !important; 
+    @fuente240: 15px !important;
+//<funciones>
+      
+    /*Fuente parrafo*/
+    .Fuente(@fuente768, @fuente640, @fuente480, @fuente320, @240){
+        font-size: @fuente768;
+        @media(max-width:640px){
+            font-size: @fuente640;
+        }
+        @media(max-width:480px){
+            font-size: @fuente640;
+        }
+        @media(max-width:320px){
+            font-size: @fuente320;
+        }
+        @media(max-width: 240px){
+            font-size: @fuente240;
+        }
+    }
+     .FunGradientes(@inicio,@fin){
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@inicio), to(@fin)) !important;
+            /* Safari 5.1+, Chrome 10+ */
+            background: -webkit-linear-gradient(top, @inicio, @fin) !important;
+            /* Firefox 3.6+ */
+            background: -moz-linear-gradient(top, @inicio, @fin) !important;
+            /* Opera 11.10+ */
+            background: -o-linear-background(top, @inicio, @fin) !important;
+            /* IE 10 */
+            background: -ms-linear-background(top, @inicio, @fin) !important;
+            /* estándar */
+            background: linear-background(top, @inicio, @fin) !important;
+    }
+    #iniciobtn{
+        @nombreImagen: "iniciobtn";
+        background: url("../img/tutorial/@{nombreImagen}768.png") !important;
+        @media(max-width: 640px){
+            background: url("../img/tutorial/@{nombreImagen}768.png") !important;
+        }
+        @media(max-width: 480px){
+            background: url("../img/tutorial/@{nombreImagen}480.png") !important;
+        }
+        @media(max-width: 320px){
+            background: url("../img/tutorial/@{nombreImagen}320.png") !important;
+        }
+        @media(max-width: 240px){
+            background: url("../img/tutorial/@{nombreImagen}240.png") !important;
+        }
+    }    
+    .ImagenTutorialNormal(@nombreImagen, @ancho768, @alto768,@ancho640,@alto640, @ancho480,@alto480, @ancho320,@alto320, @ancho240, @alto240){
+        background: url("../img/tutorial/@{nombreImagen}768.png") !important;
+        background-repeat: no-repeat !important;
+        border:none;
+        display:block;
+        width: @ancho768 !important;
+        height: @alto768 !important;
+        position: relative !important;
+        margin: 0 auto 0 auto;
+        @media (max-width: 640px){
+           width: @ancho640 !important;
+           height: @alto640 !important;
+           background-image: url("../img/tutorial/@{nombreImagen}640.png") !important;
+           background-repeat: no-repeat !important;
+        }
+        @media (max-width: 480px){
+            width: @ancho480 !important;
+            height: @alto480 !important;
+            background-image: url("../img/tutorial/@{nombreImagen}480.png") !important;
+            background-repeat: no-repeat !important;
+        } 
+        @media (max-width: 320px){
+            width: @ancho320 !important;
+            height: @alto320 !important;
+            background-image: url("../img/tutorial/@{nombreImagen}320.png") !important;
+            background-repeat: no-repeat !important;
+        }
+        @media (max-width: 240px){
+            width: @ancho240 !important;
+            height: @alto240 !important;
+            background-image: url("../img/tutorial/@{nombreImagen}240.png") !important;
+            background-repeat: no-repeat !important;
+}
+    }
+//</funciones>
+
+.imgtextoTutorial1{                         //////768/////  /////640////  ////480////  ////320/////
+     .ImagenTutorialNormal("titulotutorial1", 543px, 159px, 470px, 145px, 405px, 134px, 228px, 75px, 180px, 55px);  
+}
+
+//imagenes tutoriales
+.imgImagenTutorial1{
+     .ImagenTutorialNormal("tutorial1", 627px, 705px, 548px, 608px, 445px, 481px, 274px, 300px, 160px, 181px);  
+     margin: 5px auto !important;
+}
+.imgImagenTutorial2{
+    .ImagenTutorialNormal("tutorial2", 550px, 680px, 548px, 608px, 445px, 481px, 274px, 308px, 160px, 181px);
+}
+.imgImagenTutorial3{
+    .ImagenTutorialNormal("tutorial3", 550px, 670px, 548px, 608px, 445px, 521px, 274px, 318px, 160px, 181px);
+    margin-bottom: 60px !important;
+}
+.imgImagenTutorial4{
+    .ImagenTutorialNormal("tutorial4", 627px, 680px, 548px, 580px, 445px, 481px,  274px, 308px, 160px, 181px);
+}
+//imagenes marcadores
+.c{
+    float: left !important;
+    margin-left: 5px !important;
+     .ImagenTutorialNormal("marcadornormal", 72px, 72px, 72px, 72px, 72px ,72px, 30px, 30px, 30px, 30px);    
+}
+.ch{
+    margin-left: 5px !important;
+    float: left !important;
+     .ImagenTutorialNormal("marcadorresaltado", 72px, 72px, 72px, 72px, 72px, 72px, 30px, 30px, 30px, 30px); 
+}
+.f{
+    margin-left: 5px !important;
+    float: left !important;
+    .ImagenTutorialNormal("flecha", 62px, 72px, 62px, 72px,62px, 72px, 26px, 30px, 30px, 30px); 
+}
+.fa{
+    margin-left: 0px !important;
+    margin-right: 2px;
+    float: left !important;
+    .ImagenTutorialNormal("flechaatras", 62px, 72px, 62px, 72px,62px, 72px, 26px, 30px, 30px, 30px); 
+}
+#PaginaTutorial1, #PaginaTutorial2,#PaginaTutorial3,#PaginaTutorial4 {
+    h1{ .Fuente(@fuentetutorial768, @fuentetutorial640, @fuentetutorial480, @fuentetutorial320, @fuentetutorial240);
+        //text-align: center !important;
+        text-align: justify !important;
+        line-height: 90% !important;
+    }
+    .ui-header {
+        height: 60px;
+        h1{
+            font-size: 40px !important;
+            text-align: center !important;
+            line-height: 10pt !important;
+            margin-top: 15px;
+            @media(max-width: 320px){
+                font-size: 20px !important;
+            }
+        }
+    }
+    a{
+        width: 60px;
+        height: 50px;
+        border-radius: 10px;
+        border-width: 2px;
+        border-color: #FFF;
+        .FunGradientes(@gradienteverde1, @gradienteverde2);
+        @media(max-width: 640px){
+            height: 40px !important;
+        }
+        @media(max-width: 480px){
+            margin-top: 5px !important;
+        }
+        @media(max-width: 320px){
+            margin: 0px !important;
+            width: 40px !important;
+            height: 30px !important;
+        }
+    }
+    #iniciobtn{
+        width: 30px;
+        height: 30px;
+        margin-top: 8px;
+        @media(max-width: 640px){
+            margin-top: 5px !important;
+        }
+        @media(max-width: 480px){
+            width: 24px;
+            height: 24px;
+            margin-top: 5px;
+        }
+        @media(max-width: 320px){
+            width: 16px;
+            height: 16px;
+            margin-top: 5px !important;
+        }
+        @media(max-width: 240px){
+        margin-top: 5px !important;
+        width: 16px;
+        height: 16px;
+        }
+    }
+    .ui-mobile .ui-btn-left, .ui-mobile .ui-btn-right{
+            margin: 5px 0px 0px 5px !important;
+    }
+}
+//<divs>
+#texto, #imagen{
+    .Fuente(@fuentetutorial768, @fuentetutorial640, @fuentetutorial480, @fuentetutorial320, @fuentetutorial240);
+    float: center !important;
+    clear: both !important;
+    line-height: 30pt !important;
+    @media(max-width: 320px){
+        line-height: 15pt !important;
+        font-size: 15px !important;
+        margin-top: -10px !important;
+    }
+    @media(max-width: 240px){
+        line-height: 10pt !important;
+        font-size: 12px !important;
+        margin-top: -15px !important;
+    }
+    
+}   
+#texto{
+    @media(max-width: 240px){
+        width: 210px;
+    }    
+}
+#PaginaTutorial1{
+    #texto{
+        margin-top: -10px !important;
+        @media(max-width: 240px){
+            margin-top: -15px !important;
+        }
+    }
+    #imagen{
+            margin-top: -15px !important;
+            @media(max-width: 640px){
+                margin-top: -5px !important;
+            }
+            @media(max-width: 480px){
+                margin: 40px auto 30px auto !important;
+                position: fixed !important;
+                bottom: 60 !important;
+                top: 180 !important;
+            }
+            @media(max-width: 320px){
+                margin: 5px 25px 5px 15px !important;
+                position: fixed !important;
+                bottom: 60 !important;
+                top: 120 !important;
+            }
+            @media(max-width: 240px){
+                margin: -10px 20 5px 25 !important;
+                position: fixed !important;
+                bottom: 60 !important;
+                top: 100 !important;
+            }
+    }
+}   
+#PaginaTutorial3, #PaginaTutorial4{
+    #imagen{
+        margin: 0px auto 10px auto !important; 
+        @media(max-width: 320px){
+            margin: 10px 15px 10px 15px !important;
+        }
+        @media(max-width: 240px){
+            margin: 0px auto 10px 20 !important;
+        }
+    }
+}
+
+#imagen{
+    margin: 20px auto 20px auto !important;
+    @media(max-width: 480px){
+        position: fixed !important;
+        bottom: 60 !important;
+        top: 190 !important;
+    }
+    @media(max-width: 320px){
+        margin: 10px 15px 10px 35px !important;
+        position: fixed !important;
+        bottom: 30 !important;
+        top: 100 !important;
+    }
+    @media(max-width: 240px){
+        margin: 10px 20px 10px 15px !important;
+        position: fixed !important;
+        bottom: 40 !important;
+        top: 85 !important;
+    }
+}
+#marcador{ 
+            margin: 0 19% !important;
+            bottom: 10px !important;
+            @media(max-width: 640px){
+                margin: 0 13% !important;
+            }
+}
