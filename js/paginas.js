@@ -255,8 +255,9 @@ function CargarDetallesComercio(event, Id){
         foto_feed ="";
         $.getJSON(urlObtenerComerciosPorId + "?callback=?",{'Id': Id},
                   function(data){
+                      var comercio=new Array();
+                      
                       if (data){
-                          var comercio_Actual=  new Array();
                           $.each(data, function(i, item){
                               var nomZona = obtenerNombreZona(item['Zona']);
                               $('#banner').html("<div id='bannerZona' class='bannerZona"+item['Zona']+"'><h1 id='nombreZonah1'>"+nomZona+"</h1></div>");
@@ -285,7 +286,7 @@ function CargarDetallesComercio(event, Id){
                               else{
                                     $('#descripcionParrafo').hide(); 
                               }
-                              comercio_Actual.push({'Id': Id,'NombreComercio': item['NombreComercio'], 'Telefono': item['Telefono'], 'Zona': nomZona});
+                              comercio=[[item['NombreComercio']],[item['Direccion']],['Descripcion']];
                               
                               if(!esNulo(item['Imagen'])){
                                   $('#imgdetalle').attr({'src': ''+item['Imagen']+''});
@@ -306,10 +307,8 @@ function CargarDetallesComercio(event, Id){
                       
                       $('#galeria-lista').empty();
                       obtenerImagenesComercio(Id);
-                      console.log('llegué hasta aquí');
-                      console.log(comercio_Actual.NombreComercio);
                       //$('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="publishStory();" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
-                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+comercio_Actual+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
+                      $('#fb-boton').html('<a href="javascript:;" id="fb-boton-link" onclick="postearFacebookBrowser(event,'+comercio+');" class="ui-btn-up-a boton-detalle">Compartir en Facebook<i class="icon-facebook-sign"></i></a>');
                       $('#ContentDiv').hide().fadeIn('fast');	
                       $('#lstNavBarDetalle').hide().fadeIn('fast');
                       $('#favoritobtn a > span').hide().fadeIn('fast');

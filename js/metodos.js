@@ -402,9 +402,11 @@
       *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
       */
      function postearFacebookBrowser(event, comercio){
-                console.log(comercio);
-                console.log('pagina comercios '+$('#PaginaComercios').val());
-                var ref = window.open('http://www.yoamotejina.com/facebook/post.html?parametro1=' +comercio.NombreComercio, '_blank','location=yes');
+                var nombre = comercio[0];
+                var direccion = comercio[1];
+                var descripcion = comercio[2];
+                console.log(nombre+direccion+descripcion);
+                var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+nombre+'&direccion='+direccion+'&descripcion='+descripcion, '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
                 ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
                 ref.addEventListener('exit', function(event) { console.log(event.type); } );
