@@ -73,6 +73,7 @@
         e.stopPropagation();
         e.preventDefault();
         reescribirFiltros();
+        posT=0;
     }
     
     /**
