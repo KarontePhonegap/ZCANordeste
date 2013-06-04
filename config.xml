@@ -18,7 +18,7 @@ Karonte. Servicios en Internet. S.L.
 <preference name="orientation"             value="portrait" />
 <preference name="android-installLocation" value="preferExternal" />
 <preference name="stay-in-webview"         value="true" />
-<preference name="phonegap-version"        value="2.7.0" /> <!----he cambiado esto----->
+<preference name="phonegap-version"        value="2.5.0" /> <!----he cambiado esto----->
 <preference name="target-device" value="universal" />
 <preference name="fullscreen" value="true" />
 <icon src="icon.png"/>
