@@ -21,6 +21,7 @@ var longitud = -16.359320;
      * crearMapa. crea un mapa sin o existiese (singleton)
      */
     function crearMapa(){
+        console.log(' ## crear mapa');
         posActualPunto = ObtenerPunto(latitud, longitud);
         if(map==null){
             var mapOptions = {
@@ -51,6 +52,7 @@ var longitud = -16.359320;
      * mostrarMapaEspecifico. muestra el mapa General con todos los markers
      */
     function mostrarMapaGeneral(event){
+        console.log('   mostrar mapa general');
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios= 14;
@@ -77,6 +79,7 @@ var longitud = -16.359320;
      * mostrarMapaEspecifico.   muestra el mapa de un solo comercio
      */
     function mostrarMapaEspecifico(event,id){
+        console.log('   mostrar mapa especifico');
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios=12;
@@ -104,6 +107,7 @@ var longitud = -16.359320;
      * reiniciarMapa.   pone todas las variables a null, borra todo los que se muestra en el mapa
      */
     function reiniciarMapa(){
+        console.log('   reiniciar mapa');
         quitarTodosLosMarcadores(); //borra los marcadores del mapa y dejan de mostrarse
         quitarInfoBubble();         //cierra el infobubble, borra el infobubble y su configuración
         map= null;
@@ -117,6 +121,7 @@ var longitud = -16.359320;
      * aniadirMarcadoresComercios.    obtiene la información de los marcadores y ejecuta las funciones que situan sus marcadores y almacenan su informacion
      */
      function aniadirMarcadoresComercios(event) {
+            console.log('   añadir marcadores de comercios');
             for ( var z = 1; z <=4; z++) {
                 $.getJSON(urlObtenerComerciosPorZona + "?callback=?",
                           {
@@ -132,6 +137,7 @@ var longitud = -16.359320;
                                               var punto = ObtenerPunto(item2['Latitud'],item2['Longitud']);
                                               AniadirMarcador(punto,nombreComercio,markerIcono,10);
                                               almacenarContenidoInfoBubble(nombreComercio, item2['Direccion'], nombrezona, item2['Id'],item2['Imagen'] );
+                                              console.log('   cada marcador que se añade');
                                           });
                                       }
                                   });
@@ -145,6 +151,7 @@ var longitud = -16.359320;
      * @param id.       el id del comercio para realizar la consulta
      */
      function aniadirMarcadorComercio(event, id){
+        console.log('   añadir un marcador');
         var puntoCom;
         var latCom, longCom;
         if (ComprobarConexion()) { 
@@ -159,6 +166,7 @@ var longitud = -16.359320;
                                     var punto = ObtenerPunto(item['Latitud'],item['Longitud']);
                                     almacenarContenidoInfoBubble(nombreComercio, item['Direccion'], nombrezona, id,item['Imagen'] );
                                     AniadirMarcador(punto,nombreComercio,markerIcono,10);
+                                    console.log('   se añade el marcador');
                         });
                     }}
             );
@@ -188,16 +196,24 @@ var longitud = -16.359320;
      * mostrarPosActual.    obtiene la latitud y longitud actual y añade el marcador necesario
      */
      function mostrarPosActual(position) {
-        if(posActualMostrado==0 || latitud!=position.coords.latitude && longitud!=position.coords.longitude){
+        console.log('mostra pos actual');
+        if(posActualMostrado==0 || latitud==position.coords.latitude && longitud==position.coords.longitude){
             latitud = position.coords.latitude;
             longitud = position.coords.longitude;
             console.log(latitud+'<-- latitud || longitud-->'+longitud);
             posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
-            QuitarUltimoMarcador();
             AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
             posActualMostrado=1;
+           console.log("es el primero o no se ha movido");
         }else{
-            console.log('no te has movido');
+            console.log("no es el primero o se ha movido");
+            latitud = position.coords.latitude;
+            longitud = position.coords.longitude;
+            console.log(latitud+'<-- latitud || longitud-->'+longitud);
+            posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
+             QuitarUltimoMarcador();
+            AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
+            posActualMostrado=1;
         }
      }
     /**
@@ -238,6 +254,7 @@ var longitud = -16.359320;
      * funciona es el emulador
      */
     function quitarTodosLosMarcadores() {
+        console.log(' quitar todos los marcadores');
         if(markersArray!=null){
             for (var i = markersArray.length - 1; i >= 0; i--) {
                 markersArray[i].setMap(null);
