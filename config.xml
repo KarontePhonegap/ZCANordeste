@@ -79,15 +79,6 @@ Karonte. Servicios en Internet. S.L.
 <access subdomains="true" origin="http://maps.google.com"/>
 <access subdomains="true" origin="http://maps.gstatic.com"/>
 <access subdomains="true" origin="http://csi.gstatic.com"/>
-<access subdomains="true" origin="https://cbk0.googleapis.com"/>
-<access subdomains="true" origin="https://khm1.googleapis.com"/>
-<access subdomains="true" origin="https://khm0.googleapis.com"/>
-<access subdomains="true" origin="https://mt1.googleapis.com"/>
-<access subdomains="true" origin="https://mt0.googleapis.com"/>
-<access subdomains="true" origin="https://maps.googleapis.com"/>
-<access subdomains="true" origin="https://maps.google.com"/>
-<access subdomains="true" origin="https://maps.gstatic.com"/>
-<access subdomains="true" origin="https://csi.gstatic.com"/>
 
 <access subdomains="true" origin="http://*.facebook.*"/>
 <access subdomains="true" origin="http://m.facebook.com"/>

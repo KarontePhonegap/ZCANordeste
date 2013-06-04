@@ -372,5 +372,5 @@ function obtenerNombreZona(Id){
  */
 function error(error) {
         navigator.notification.alert("Código: " + error.code + "\nMensaje: "
-                                     + error.message);
-    }
+                                     + error.message);error
+}
