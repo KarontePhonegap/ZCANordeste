@@ -56,9 +56,12 @@ var longitud = -16.359320;
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios= 14;
+            console.log('el zoom utilizado en los comercios es '+zoomComercios);
             $.mobile.changePage($('#PaginaLocalizacion'));
+            console.log('pagina cambiada');
             $('#PaginaLocalizacion').bind('pageshow', function(e) {
                 // Carga el preload
+                console.log('cargar preload');
                 $.mobile.loading('show', {
                     text : 'cargando',
                     textVisible : true,
