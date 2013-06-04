@@ -113,7 +113,9 @@ function eliminarFavorito(nombreComercio) {
         
         for (i = 0; i < listaFavoritos.length; i++){
             temp = listaFavoritos[i];
-            if (temp.nombreComercio.toUpperCase != $.trim(nombreComercio).toUpperCase){
+            console.log('lista'+temp.nombreComercio.toUpperCase());
+            console.log('comercio'+$.trim(nombreComercio).toUpperCase());
+            if (temp.nombreComercio.toUpperCase() != $.trim(nombreComercio).toUpperCase()){
                 listaTemp.push(listaFavoritos[i]);
             }
         }
