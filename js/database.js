@@ -9,7 +9,7 @@ var existe = false;
  */
 function obtenerBD() {
     console.log('zcabd '+ZCABD);
-    ZCABD = window.openDatabase("ZCADB", "1.0", "ZCADB", 2000000);
+    ZCABD = window.openDatabase("ZCADB", "1.0", "ZCADB", 400);
     console.log('contenido del objeto zcabd '+ZCABD);
     ZCABD.transaction(comprobarBD, errorBD, okBD);
 }
