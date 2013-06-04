@@ -59,7 +59,7 @@ var longitud = -16.359320;
             console.log('el zoom utilizado en los comercios es '+zoomComercios);
             $.mobile.changePage($('#PaginaLocalizacion'));
             console.log('pagina cambiada');
-            $('#PaginaLocalizacion').bind('pageshow', function(e) {
+            $('#PaginaLocalizacion').live('pageshow', function(e) {
                 // Carga el preload
                 console.log('cargar preload');
                 $.mobile.loading('show', {
