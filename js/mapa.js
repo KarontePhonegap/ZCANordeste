@@ -57,7 +57,7 @@ var longitud = -16.359320;
             reiniciarMapa();
             zoomComercios= 14;
             console.log('el zoom utilizado en los comercios es '+zoomComercios);
-            $.mobile.changePage($('#PaginaLocalizacion'));
+            
             console.log('pagina cambiada');
             if(jQuery){            
                 $('#PaginaLocalizacion').bind('pageshow', function(e) {
@@ -74,6 +74,7 @@ var longitud = -16.359320;
                     $.mobile.loading('hide');
                     $('#PaginaLocalizacion').unbind('pageshow');
                 });
+                $.mobile.changePage($('#PaginaLocalizacion'));
             }else{
                 console.log('el problema es que jquery no esta activado');
                  var newscript = document.createElement('script');
@@ -96,7 +97,6 @@ var longitud = -16.359320;
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios=12;
-            $.mobile.changePage($('#PaginaLocalizacion'));
             if(jQuery){            
                 $('#PaginaLocalizacion').bind('pageshow', function(e) {
                 // Carga el preload
@@ -111,6 +111,7 @@ var longitud = -16.359320;
                 $.mobile.loading('hide');
                 $('#PaginaLocalizacion').unbind('pageshow');
                 });
+                $.mobile.changePage($('#PaginaLocalizacion'));
             }else{
                 console.log('el problema es que jquery no esta activado');
                  var newscript = document.createElement('script');
