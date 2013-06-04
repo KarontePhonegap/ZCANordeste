@@ -69,7 +69,7 @@ var longitud = -16.359320;
                 $('#PaginaLocalizacion').unbind('pageshow');
             });
         }else{
-            MostrarAlerta(alert_conexion_mensaje , alert_conexion_titulo , alert_conexion_boton);
+            MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
         PararEvento(event);
     }
@@ -95,7 +95,7 @@ var longitud = -16.359320;
                 $('#PaginaLocalizacion').unbind('pageshow');
             });
         }else{
-            MostrarAlerta(alert_conexion_mensaje , alert_conexion_titulo , alert_conexion_boton);
+            MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
         PararEvento(event);
     }
@@ -164,7 +164,7 @@ var longitud = -16.359320;
             );
         }
         else {
-            MostrarAlerta(alert_conexion_mensaje , alert_conexion_titulo , alert_conexion_boton);
+            MostrarAlerta('No dispone de conexión.');
         }
     }
      
@@ -188,25 +188,17 @@ var longitud = -16.359320;
      * mostrarPosActual.    obtiene la latitud y longitud actual y añade el marcador necesario
      */
      function mostrarPosActual(position) {
-        if(posActualMostrado==0 || latitud==position.coords.latitude && longitud==position.coords.longitude){
+        if(posActualMostrado==0 || latitud!=position.coords.latitude && longitud!=position.coords.longitude){
             latitud = position.coords.latitude;
             longitud = position.coords.longitude;
             console.log(latitud+'<-- latitud || longitud-->'+longitud);
             posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
+            QuitarUltimoMarcador();
             AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
             posActualMostrado=1;
-           console.log("es el primero o no se ha movido");
         }else{
-            console.log("no es el primero o se ha movido");
-            latitud = position.coords.latitude;
-            longitud = position.coords.longitude;
-            console.log(latitud+'<-- latitud || longitud-->'+longitud);
-            posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
-             QuitarUltimoMarcador();
-            AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
-            posActualMostrado=1;
+            console.log('no te has movido');
         }
-        
      }
     /**
      * AniadirMarcador. Añade un nuevo marcado a la lista de marcadores actuales y
@@ -343,3 +335,25 @@ function almacenarContenidoInfoBubble(nombreComercio, direccion, nombrezona, id,
     contenidosInfoBubbleArray.push([nombreComercio,contenido]);
 } 
 }
+//-------------------------------
+/**
+ * obtenerNombreZona. devuelve un valor string con el nombre de la zona
+ * @param Id        id de la zona 
+ */
+function obtenerNombreZona(Id){
+    var nombrezona = "";
+    switch (Id) {
+        case 1: nombrezona = 'Tejina';                  break;
+        case 2: nombrezona = 'Valle de Guerra';         break;
+        case 3: nombrezona = 'Punta del Hidalgo';       break;
+        case 4: nombrezona = 'Bajamar';                 break;
+    }
+    return nombrezona;
+}
+/**
+ * error.   emite el codigo de error y el mensaje
+ */
+function error(error) {
+        navigator.notification.alert("Código: " + error.code + "\nMensaje: "
+                                     + error.message);
+    }
