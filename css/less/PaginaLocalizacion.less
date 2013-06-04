@@ -22,9 +22,19 @@
     overflow: hidden;
     position: relative;
     width: 100% !important; 
-    height: 200px !important;
-    //height: 100% !important; //1024
-    //parece dar problemas
+    height: 800px !important; //1024
+    @media(max-width: 640px){
+        height: 800px !important; //960
+    }
+    @media(max-width: 480px){
+        height: 760px !important;
+    }
+    @media(max-width: 320px){
+        height: 400px !important; //480
+    }
+    @media(max-width: 240px){
+        height: 250px !important; //320
+    }
 }
 #tooltip{
          #enlacetooltip{
