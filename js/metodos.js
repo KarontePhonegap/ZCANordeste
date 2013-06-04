@@ -394,11 +394,10 @@
                 
                 var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } 
+                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url);
                                      if (event.url.match("mobile/close")) {
                                             ref.close();
-                                      }
-                );
+                                      });
                 ref.addEventListener('exit', function(event) { console.log(event.type); } );
         PararEvento(event);
      }
