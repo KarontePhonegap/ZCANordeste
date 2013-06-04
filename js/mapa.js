@@ -59,20 +59,30 @@ var longitud = -16.359320;
             console.log('el zoom utilizado en los comercios es '+zoomComercios);
             $.mobile.changePage($('#PaginaLocalizacion'));
             console.log('pagina cambiada');
-            $('#PaginaLocalizacion').live('pageshow', function(e) {
-                // Carga el preload
-                console.log('cargar preload');
-                $.mobile.loading('show', {
-                    text : 'cargando',
-                    textVisible : true,
-                    textonly : true
+            if(jQuery){            
+                $('#PaginaLocalizacion').bind('pageshow', function(e) {
+                    // Carga el preload
+                    console.log('cargar preload');
+                    $.mobile.loading('show', {
+                        text : 'cargando',
+                        textVisible : true,
+                        textonly : true
+                    });
+                        crearMapa(); 
+                        aniadirMarcadoresComercios(event);
+                    // Se quita el loading y se desvincula el evento 'pageshow'
+                    $.mobile.loading('hide');
+                    $('#PaginaLocalizacion').unbind('pageshow');
                 });
-                    crearMapa(); 
-                    aniadirMarcadoresComercios(event);
-                // Se quita el loading y se desvincula el evento 'pageshow'
-                $.mobile.loading('hide');
-                $('#PaginaLocalizacion').unbind('pageshow');
-            });
+            }else{
+                console.log('el problema es que jquery no esta activado');
+                 var newscript = document.createElement('script');
+                     newscript.type = 'text/javascript';
+                     newscript.async = true;
+                     newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
+                     (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
+            }
+            console.log('despues del pageshow');
         }else{
             MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
@@ -109,6 +119,7 @@ var longitud = -16.359320;
                      newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
                      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
             }
+             console.log('despues del pageshow');
         }else{
             MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
