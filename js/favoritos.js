@@ -117,6 +117,7 @@ function eliminarFavorito(nombreComercio) {
                 listaTemp.push(listaFavoritos[i]);
             }
         }
+        console.log(listaFavoritos+'<--favoritos || temporal-->'+listaTemp);
         listaFavoritos = listaTemp;
         
         mostrarFavoritos();
