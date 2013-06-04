@@ -73,7 +73,6 @@
         e.stopPropagation();
         e.preventDefault();
         reescribirFiltros();
-        posT=0;
     }
     
     /**
@@ -84,9 +83,10 @@
      */ 
     function Inicio(e){
         console.log('volviendo a inicio');
-        $.mobile.changePage($('#PaginaInicial'));
-        PararEvento();
         posT = 0;
+        $.mobile.changePage($('#PaginaInicial'));
+        PararEvento(e);
+        
     }
         
     /**
