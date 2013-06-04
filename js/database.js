@@ -8,7 +8,9 @@ var existe = false;
  * obtenerDB.   carga la base de datos, y llama otro método que crea las tablas si no existen
  */
 function obtenerBD() {
+    console.log('zcabd '+ZCABD);
     ZCABD = window.openDatabase("ZCADB", "1.0", "ZCADB", 2000000);
+    console.log('contenido del objeto zcabd '+ZCABD);
     ZCABD.transaction(comprobarBD, errorBD, okBD);
 }
 
@@ -18,6 +20,7 @@ function obtenerBD() {
 {
 function comprobarBD (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS FAVORITOS (Id INTEGER, nombreComercio VARCHAR(100))');
+    
 }
 
 function errorBD(err) {

@@ -4,11 +4,11 @@ var listaFavoritos = new Array();
 
 function mostrarFavoritos(){
     if(listaFavoritos!=null){
-        console.log('        Tabla Favoritos-------------');
+        console.log('-Tabla Favoritos-------------');
         for(i = 0; i<listaFavoritos.length; i++){
-            console.log('     #'+listaFavoritos[i].nombreComercio);
+            console.log('   #'+listaFavoritos[i].nombreComercio);
         }
-        console.log('        ---------------------------');
+        console.log('-----------------------------');
     }
     else{
         console.log('listaFavoritos = vacia');
