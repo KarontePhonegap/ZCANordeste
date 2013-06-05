@@ -47,11 +47,16 @@ Karonte. Servicios en Internet. S.L.
 -->
 
 <!-- Android -->
-<gap:splash src="appconfig/splash/android/splash320x426.png" gap:platform="android" gap:density="ldpi" />
+<!--<gap:splash src="appconfig/splash/android/splash320x426.png" gap:platform="android" gap:density="ldpi" />
 <gap:splash src="appconfig/splash/android/splash320x470.png" gap:platform="android" gap:density="mdpi" />
 <gap:splash src="appconfig/splash/android/splash480x640.png" gap:platform="android" gap:density="hdpi" />
-<gap:splash src="appconfig/splash/android/splash720x960.png" gap:platform="android" gap:density="xhdpi" />
-
+<gap:splash src="appconfig/splash/android/splash720x960.png" gap:platform="android" gap:density="xhdpi" />-->
+<gap:splash src="appconfig/splash/android/nuevo/splash200x320.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="appconfig/splash/android/nuevo/splash320x480.png" gap:platform="android" gap:density="mdpi" />
+<gap:splash src="appconfig/splash/android/nuevo/splash480x800.png" gap:platform="android" gap:density="hdpi" />
+<gap:splash src="appconfig/splash/android/nuevo/splash720x1280.png" gap:platform="android" gap:density="xhdpi" />
+ 
+ 
  <gap:plugin name="FacebookConnect">
    <param name="APP_ID" value="377139305740929" />
  </gap:plugin>
