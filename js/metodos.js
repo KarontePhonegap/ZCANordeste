@@ -1,19 +1,21 @@
-/***********************************/
-/***            Métodos          ***/
-/***********************************/
-//este arcivo almacena las funciones auxiliares que se utilizan en el resto de archivos js del proyecto
+//MÉTODOS. contiene las funciones de las que dependen otros métodos y scripts
 
-
-//PAGINAS
+//----páginas. estos métodos estan relacionados con distribucción y cambios de página
+    
+    
+    var anchoImagen, tamHeader; 
+    //ponen tope a la longitud del texto de las listas
+    var maxi, maxisectores; 
+    //ajustan el tamaño de los infobubbles (debe hacerse por código)
+    var mediaH, mediaW;
     /**
-     * DetectarDimensiones. Detecta cuales son las dimensiones de la pantalla para
-     * saber que tamaño dar de imagen usar en fondos y otras imágenes
+     * DetectarDimensiones. Detecta cuales son las dimensiones de la pantalla para asi obtener el valor adecuado de varias variables
      */
-    var anchoImagen, maxi, maxisectores, mediaH, mediaW, tamHeader;
     function DetectarDimensiones(){
         if (window.innerWidth >= 768) {
             tipoDispositivo = "iPad o tablet";
             anchoImagen = 768;
+
             maxi=30;
             maxisectores= 32;
             mediaW= 350;
@@ -66,7 +68,7 @@
     }
     
     /**
-     * Volver. Retrocede una posiciónn en la historia (para el botónn 'Atrás')
+     * Volver. Retrocede una posiciónn en la historia (para el botón 'Atrás')
      */
     function Volver(e){
         history.back();
@@ -76,8 +78,7 @@
     }
     
     /**
-     * Inicio. Vuelve a la pagina de inicio
-     * 
+     * Inicio. Vuelve a la pagina de inicio desde el tutorial
      * @param e
      * @returns
      */ 
@@ -90,7 +91,7 @@
     }
         
     /**
-     * PararEvento. Para la propagaciónn del evento pasado como parámetro.
+     * PararEvento. Para la propagación del evento pasado como parámetro.
      * @param event  evento que se desea parar
      */
     function PararEvento(event){
@@ -116,11 +117,10 @@
     }
     
     
-//TEXTO Y FILTROS
+//----texto y filtros. métodos relacionados con recorte, filtro, comparación y generación de texto
+    
     /**
-     * transformarCadena. hace que la cadena recibida por parámetro tenga un máximo
-     * de caracteres seguido de tres puntos si supera un limite
-     * 
+     * transformarCadena. limita el número de caracteres que se muestra en las listas
      * @param: cadena cadena de caracteres a transformar
      * @param: maximo máximo de la cadena
      * @output: cadenatransformada cadena transformada
@@ -138,7 +138,7 @@
     }
     
     /**
-     * filtrarComercios y filtrarSectores.  obtiene el contenido del cuadro de texto tras comparar quienes coinciden, muestra los positivos y oculta los negativos.
+     * filtrarComercios y filtrarSectores.  oculta los elementos lista que no coincidan en contenido con el parámetro introducido en el input que lanza esta función.
      * Si se borra todo el cuadro de texto se muestran todos los elementos de la lista de nuevo.
      */
     function filtrarComercios(){
@@ -150,6 +150,7 @@
                 var contenido_li_titulo_actual = $('#'+x+' h3').html();
                 var contenido_li_direccion_actual = $('#'+x+' p').html();
                 
+                //mostramos u ocultamos los elementos mediante css
                 if (buscarCoincidencia(contenido_li_titulo_actual, contenido_li_direccion_actual, texto_buscador)){
                     $('#'+x+'').show().removeClass('oculto');
                 }
@@ -186,7 +187,7 @@
     }
     
     /**
-     * vaciarFiltros.   si el usuario no ha escrito aún en el cuadro de busqueda, elimina el value del cuadro para facilitar la escritura al usuario
+     * vaciarFiltros.   vacía el contenido de información del input al hacer clic sobre el con intención de escribir
      */
     function vaciarFiltros(){
         if(buscarCoincidencia($('#filtroSectores').val(), null, "Introduzca") || buscarCoincidencia($('#filtroComercios').val(), null, "Introduzca")){
@@ -196,7 +197,7 @@
     }
     
     /**
-     * reescribirFiltros.   si el usuario ha dejado el filtro vacio y hace clic en cualquier parte fuera del input reaparece el mensaje
+     * reescribirFiltros.   reescribe el contenido informativo del input si el usuario lo ha dejado vacío y pierde el foco
      */
     function reescribirFiltros(){
         if(buscarCoincidencia($('#filtroSectores').val(), null, "") || buscarCoincidencia($('#filtroComercios').val(), null, "")){
@@ -208,7 +209,7 @@
     }
     
     /**
-     * buscarCoincidencia.  devuelve verdadero o falso si uno de los dos primeros parámetros (titulo y subtitulo(sólo comercios) de la lista) contiene el último (contenido del cuadro de busqueda)
+     * buscarCoincidencia.  devuelve verdadero si alguno de los dos primeros parámetros es igual al último (que es el introducido por input)
      * @param   titulo. el titulo del elemento de la lista
      * @param   subtitulo. el subtitulo o dirección del elemento lista (solo si los elementos representan comercios)
      * @param   parametro. el contenido del cuadro de búsqueda
@@ -240,9 +241,9 @@
     }
     
     
-//IMAGENES
+//----imagenes. métodos relacionados con carga de imagenes desde la base de datos, y establecer mediante código dinámico algunas fotos (método necesario por incopatibilidad en algunos dispositivos)
     /**
-    * obtenerImagenesComercio().    mediante una consulta a la tabla imagenes de la base de datos con el id del comercio obtenemos una lista de imagenes adicionales
+    * obtenerImagenesComercio.    obtiene imagenes por comercio y si existen, muestra un enlace a la galería en la #PaginaDetallesComercio
     * @param  Id.  el id del comercio
     */
     function obtenerImagenesComercio(Comercio){
@@ -283,7 +284,8 @@
     }
     
     /**
-     * cargarImagenesComercio.  obtiene la lista de imagenes adicionales del comercio y si es distinta de null la inserta en la pagina detalles comercios
+     * cargarImagenesComercio.  con la lista de imagenes obtenida en el método "obtenerImagenesComercio" va insertando cada una en la página galería.
+     * al pulsar una de estas imágenes se ejecutará la librería "photoswipe" y mostrará cada imagen en el mayor tamaño posible
      */
     function cargarImagenesComercio(){
         console.log('cargando imagenes comercio');
@@ -293,14 +295,12 @@
                                        '<img src='+listaImagenesComercio[i]+' class="galeria-imagen" />'+
                                        '</a>');
         }
-        //onClick ="CargarGaleria(event, '+i+');"
         var myPhotoSwipe = $("#galeria-lista a").photoSwipe({enableMouseWheel: false,enableKeyboard: false});
         
     }
     
     /**
-     * cambiarImagenesPaginaPrincipal. cambia las imagenes del inicio ayudandose del
-     * identificador de cada etiqueta img
+     * cambiarImagenesPaginaPrincipal. establece dinámicamente las imágenes de los botones de la página inicio
      */
     function cambiarImagenesPaginaPrincipal(){
         var inicio = 'img/btn/inicio'+ anchoImagen + '.png';
@@ -318,106 +318,56 @@
         $('#imgOpcionFacebook').attr({'src': facebook});
     }
 
- //OBJETOS
-    
-    /**
-     * esNulo. Comprueba que una cadena es nula, vacía, string en blanco o indefinida
-     * usada para no añadir campos inecesarios en la PaginaDetallesComercio
-     */
-    function esNulo(item){
-        var resultado = true;
-        if(item.toString()!= null && item.toString()!= undefined && item.toString()!=' ' && item.toString()!=''){
-            resultado = false;
-        }
-        return resultado;
-    }
-    
-    /**
-     * agregarQuitarFavorito. funcion que agrega al comercio en visualizaciónn a una
-     * tabla en localstore y lo considera como favorito.
-     * @param: Id Identificaciónn del comercio que se desea agregar a favoritos
-     */
-    function agregarQuitarFavorito(event, Id){
-        var nombreItem;
-        $.getJSON(urlObtenerComerciosPorId + "?callback=?",{'Id': Id},
-                  function(data){
-                      if (data){
-                          $.each(data, function(i, item){
-                              nombreItem = item['NombreComercio'];
-                              if(!esFavorito(nombreItem)){
-                                  console.log('agregando favorito');
-                                  insertarFavorito(Id, nombreItem);
-                                  $('#favoritobtn a > span').addClass('marcado');
-                                  
-                              }else{
-                                  console.log('eliminando favorito');
-                                  eliminarFavorito(nombreItem);
-                                  $('#favoritobtn a > span').removeClass('marcado');
-                              }
-                          });
-                      }
-                  }
-                 );
-        PararEvento(event);
-        $.mobile.loading('hide');
-        $.mobile.changePage($('#PaginaDetalleComercio'));
-    }
-    
-    /**
-     * cebra.   cada vez que se ejecuta, elimina las clases impar y par y las aplica de nuevo de forma intercalada a los elementos de la lista
-     * @param   element.    el elemento lista al que se le aplicará el estilo cebrado.
-     */
-    function cebra(element){
-        $('#'+element+' li').removeClass('impar par');
-        $('#'+element+' li').not('.oculto').filter(':odd').addClass('par');
-        $('#'+element+' li').not('.oculto').filter(':even').addClass('impar');
-    }
 
-//FACEBOOK
+//----facebook. métodos relacionados con la conexión a facebook situada en www.yoamotejina.com/facebook
+        //TODO. intentar que los inAppBrowser:
+            //-lancen la función al abrirse
+            //-se cierren automáticamente al haber terminado con el proceso
+    
     /**
-     *loginFacebookBrowser.    abre una ventana nueva con una pagina web que permite loguearse en facebook
+     *loginFacebookBrowser. abre un nuevo inAppBrowser con una pagina web que permite loguearse en facebook
      */
-     
      function loginFacebookBrowser(event){
-                console.log('pagina comercios '+$('#PaginaComercios').val());
-                var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=yes');
-                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('exit', function(event) { console.log(event.type); } );
-        
+        console.log('pagina comercios '+$('#PaginaComercios').val());
+        var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=yes');
+        ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+        ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+        ref.addEventListener('exit', function(event) { console.log(event.type); } );
         PararEvento(event);
      }
      
      /**
-      *logoutFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
+      *logoutFacebookBrowser.   abre un nuevo inAppBrowser con una página que permite cerrar sesión en facebook
       */
      function logoutFacebookBrowser(event){
-                
-                var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
-                ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                ref.addEventListener('loadstop', function(event) { 
-										console.log(event.type + ' - ' + event.url);
-                                     if (event.url.match("mobile/close")) {
-                                            ref.close();
-                                      }
-				});
-                ref.addEventListener('exit', function(event) { console.log(event.type); } );
+        var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
+        ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+        ref.addEventListener('loadstop', function(event) { 
+                                console.log(event.type + ' - ' + event.url);
+                             if (event.url.match("mobile/close")) {
+                                    ref.close();
+                              }
+        });
+        ref.addEventListener('exit', function(event) { console.log(event.type); } );
         PararEvento(event);
      }
-     /**
-      *postearFacebookBrowser.   abre una ventana nueva con una pagina web que permite cerrar sesión en facebook
-      */
-     function postearFacebookBrowser(event){
-                if(!esNulo(comercioFacebook)){
-                    var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+comercioFacebook[0]+'&direccion='+comercioFacebook[1]+'&descripcion='+comercioFacebook[2],'_blank','location=yes');
-                    ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
-                    ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
-                    ref.addEventListener('exit', function(event) { console.log(event.type); } );
-                    comercioFacebook=null;
-                }
-        PararEvento(event);
-     }
-    
+    /**
+     *postearFacebookBrowser.   abre un nuevo inAppBrowser que permite compartir en la biografía del usuario la información de un comercio
+     */
+    function postearFacebookBrowser(event){
+        if(!esNulo(comercioFacebook)){
+            var ref = window.open('http://www.yoamotejina.com/facebook/post.html?nombre='+comercioFacebook[0]+'&direccion='+comercioFacebook[1]+'&descripcion='+comercioFacebook[2],'_blank','location=yes');
+            ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
+            ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
+            ref.addEventListener('exit', function(event) { console.log(event.type); } );
+            comercioFacebook=null;
+        }
+    PararEvento(event);
+    }
+
+    /**
+     * verZCAFacebookBrowser.   abre un nuevo inAppBrowser mostrando el perfil de facebook de la asociación
+     */
     function verZCAFacebookBrowser(event, comercio){
                 var ref = window.open('http://www.facebook.com/ZcaNordeste', '_blank','location=yes');
                 ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
@@ -426,11 +376,9 @@
         PararEvento(event);
      }
 
-//DISPOSITIVO Y NOTIFICACIONES    
+//----dispositivo y notificaciones  
     /**
-     * esMovil. devuelve true si la aplicación se ejecuta en un móvil y false si se
-     * ejecuta en un navegador web
-     * 
+     * esMovil. obtiene mediante userAgent el tipo de dispositivo en el que se ejecuta y devuelve true si es un móvil
      * @returns boolean
      */
     function esMovil(){
@@ -471,7 +419,7 @@
     } 
     
     /**
-     * ComprobarConexion.   comprueba si existe conexión de algún tipo. en caso afirmativo devuelve un boolean afirmativo y en caso contrario un booleano negativo
+     * ComprobarConexion.   comprueba si existe conexión de algún tipo. en caso afirmativo devuelve true
      */
     function ComprobarConexion(){
         var valor = false;
@@ -510,7 +458,7 @@
     }
     
     /**
-     *MostrarAlerta.    ejecuta un pop up con un mensaje.
+     *MostrarAlerta.    muestra un pop up con un mensaje.
      * @params  mensaje, titulo, boton
      */    
     function MostrarAlerta(mensaje, titulo, boton){
@@ -528,4 +476,29 @@
     function error(error) {
         navigator.notification.alert("Código: " + error.code + "\nMensaje: " + error.message);
     }
+    
+//----otras.
+    
+    /**
+     * esNulo. Comprueba que una cadena es nula, vacía, string en blanco o indefinida
+     * usada para no añadir campos inecesarios en la PaginaDetallesComercio y en otros casos que se necesite comprobar el contenido de una cadena
+     */
+    function esNulo(item){
+        var resultado = true;
+        if(item.toString()!= null && item.toString()!= undefined && item.toString()!=' ' && item.toString()!=''){
+            resultado = false;
+        }
+        return resultado;
+    }
+    
+    /**
+     * cebra.   cada vez que se ejecuta, elimina las clases impar y par y las aplica de nuevo de forma intercalada a los elementos de la lista
+     * @param   element.    el elemento lista al que se le aplicará el estilo cebrado.
+     */
+    function cebra(element){
+        $('#'+element+' li').removeClass('impar par');
+        $('#'+element+' li').not('.oculto').filter(':odd').addClass('par');
+        $('#'+element+' li').not('.oculto').filter(':even').addClass('impar');
+    }
+
 //------------------------------	

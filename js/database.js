@@ -1,4 +1,7 @@
-// JavaScript Document/*--- PROPIEDADES ---*/
+//DATABASE. obtiene la base de datos web sql y la crea de nuevo si no existe
+
+
+/**--       PROPIEDADES      --**/
 var ZCABD;
 var i;
 var existe = false;
@@ -8,14 +11,12 @@ var existe = false;
  * obtenerDB.   carga la base de datos, y llama otro método que crea las tablas si no existen
  */
 function obtenerBD() {
-    console.log('zcabd '+ZCABD);
     ZCABD = window.openDatabase("ZCADB", "1.0", "ZCADB", 400);
-    console.log('contenido del objeto zcabd '+ZCABD);
     ZCABD.transaction(comprobarBD, errorBD, okBD);
 }
 
 /**
- * comprobarBD. si la tabla no existe, la crea. Si lo logra produce un mensaje positivo y si no uno negativo
+ * comprobarBD. si la tabla no existe, la crea. 
  */
 {
 function comprobarBD (tx) {
@@ -34,7 +35,7 @@ function okBD() {
 }
 	
 /**
- * transaccionOK.   emite un mensaje positivo
+ * OKtx.   emite un mensaje positivo si la transacción se a efectuado correctamente
  * @param   mensaje.    el mensaje personalizado del método que invoca este otro
  */
 function oktx(mensaje){

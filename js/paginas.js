@@ -1,4 +1,7 @@
-//variables--------------------------
+//PAGINAS. contiene los métodos referentes a la carga y muestra de cada una  de las páginas de la aplicación
+
+
+/**--       PROPIEDADES      --**/
 {
     //webService
     var urlObtenerComerciosPorZona = 			"http://172.16.1.11/WSZCA/serviciosJSON.asmx/ObtenerComerciosPorZona";
@@ -17,17 +20,18 @@
     textosTutorial[4]="Localiza un comercio, agrégalo a tus favoritos o mira los negocios que tienes a tu alrededor desde tu móvil";
     var posT = 0;
     
+    // galería
     var listaImagenesComercio = new Array();
     var indiceImagenesComercio = 0;
     
+    //otras
     var movil;
     var anchoImagen = document.innerWidth;
 }
 //-------------------------------------------------------------------------------------------
 
-//Cargas de páginas-------------
 /**
- * Cargar Zonas. carga la listview con las 4 zonas de la ZCA
+ * Cargar Zonas. muestra la página que contiene una lista con las cuatro zonas que constituyen la ZCA Nordeste
  */
 function CargarZonas(event){
     if(ComprobarConexion()){
@@ -68,9 +72,7 @@ function CargarZonas(event){
 }
 
 /**
- * CargarComerciosPorZona. carga la página que muestra TODOS los comercios de
- * una determinada zona de la ZCA en una listview
- * 
+ * CargarComerciosPorZona.  muestra la página que contiene la lista con los comercios de una determinada zona
  * @param: zona zona de la que se desean cargar los comericos
  */
 function CargarComerciosPorZona(event, zona){
@@ -136,8 +138,7 @@ function CargarComerciosPorZona(event, zona){
 
 
 /**
- * CargarSectores. Carga la página con la listview que contiene todos los
- * sectores de la ZCA
+ * CargarSectores.  muestra la página que contiene la lista con los con todos los sectores de la ZCA Nordeste
  */
 function CargarSectores(event){
     if(ComprobarConexion()){
@@ -181,10 +182,8 @@ function CargarSectores(event){
 }
 
 /**
- * CargarcomerciosPorSector. carga la página que muestra los comercios de un
- * determinado sector de la ZCA en una listview
- * 
- * @param: sector sector del que se desean cargar los comercios
+ * CargarcomerciosPorSector.  muestra la página que contiene la lista con los comercios de un determinado sector
+ * @param: sector.  sector del que se desean cargar los comercios
  */
 function CargarComerciosPorSector(event, sector){
     if(ComprobarConexion()){
@@ -238,9 +237,7 @@ function CargarComerciosPorSector(event, sector){
 }
 
 /**
- * CargarDetallesComercios. Carga la página que contiene mayor detalle un
- * comercio. permite agregarlo a favoritos, llamar, enviar un email o pasar a
- * otra página para visualizarlo en el mapa
+ * CargarDetallesComercios.  muestra la página que contiene los datos de un determinado comercio
  * 
  * @param: Id Identificaciónn del comercio del que se desea mostrar el detalle
  */
@@ -326,8 +323,7 @@ function CargarDetallesComercio(event, Id){
 
 
 /**
- * CargarFavoritos. Muestra la página que contiene los elementos de la web SQL
- * database table ("favoritos") en una list view.
+ * CargarFavoritos.  muestra la página que contiene la lista con los comercios que han sido considerados favoritos y por tanto almacenados en tabla favoritos de la base de datos web
  */
 function CargarFavoritos(event){
     if(ComprobarConexion()){
@@ -348,7 +344,9 @@ function CargarFavoritos(event){
     PararEvento(event);
 }
 
-
+/**
+ * CargarFavoritos.  muestra la página que contiene tres botones con enlaces a inciar sesión, cerrar sesión y ver la página de perfil de la ZCA Nordeste en fácebook
+ */
 function CargarFacebook(event){
     if(ComprobarConexion()){
         //TODO comprobar si está logueado y mostrar los botones de distinta forma
@@ -383,8 +381,7 @@ function CargarFacebook(event){
 }
 
 /**
- * CargarTutorial. carga la página que muestra todas las pestañas del tutorial.
- * 
+ * CargarTutorial. es capaz de mostrar la página tutorial en función de un índice recibido por parámetro
  * @param: contador posiciónn actual por si el el botónn que lanza el evento es
  *         la flecha de avance
  */
@@ -411,6 +408,7 @@ function CargarFacebook(event){
         PararEvento(event);    
     }
     
+    //cargarTutorial#.  carga la página tutorial correspondiente
     function CargarTutorial1(event){
         if(ComprobarConexion()){	    
             $.mobile.loading('show', {text: "Cargando", textVisible:true, textonly:true});
@@ -483,9 +481,9 @@ function CargarFacebook(event){
         }
         PararEvento(event);    
     }
-    
-    /**
- * DescargarTutorial.
+
+/**
+ * DescargarTutorial. retrocede un pagina en el tutorial basándose en un índice
  */
     function DescargarTutorial(event, contador){
         if(ComprobarConexion()){	
@@ -510,7 +508,7 @@ function CargarFacebook(event){
         PararEvento(event);    
     }
     
-    /**Eventos*/
+//----eventos.  los eventos de swipe entre las páginas del tutorial
     // derecha
     
     $('#PaginaTutorial1').on('swiperight', function(event){
@@ -555,11 +553,4 @@ function CargarFacebook(event){
         posT=0;
         PararEvento(event);
     });
-    /*
-    document.getElementById('PaginaSector').getElementsByClassName('ui-input-text').addEventListener(function(){
-        console.log('has escrito');
-        cebra('lstSectores');
-    },'change',false);
-      */  
 }
-// JavaScript Document

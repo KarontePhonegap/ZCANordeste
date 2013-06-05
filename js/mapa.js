@@ -1,27 +1,30 @@
-var map = null;
-var zoomComercios;
-var tipoMapa = google.maps.MapTypeId.ROADMAP;
+//MAPA. gestiona todo lo referente con el mapa y la #PaginaLocalización
 
-//var tipoMapa = google.maps.MapTypeId.HYBRID;
 
-var markersArray = [];
-var markerIcono =       'img/mapa/markerIcono.png';
-var posActualIcono =    'img/mapa/posActualIcono.png';
-var posActualPunto;
-var posActualMostrado = 0;
-var infoBubble1;
-var contenidosInfoBubbleArray = new Array();
+/**--       PROPIEDADES      --**/
+    var map = null;
+    var zoomComercios;
+    
+    //TIPOS DE MAPA: ROADMAP, HYBRID, SATELLITE, TERRAIN
+    var tipoMapa = google.maps.MapTypeId.ROADMAP; 
+    
+    var markersArray = [];
+    var markerIcono =       'img/mapa/markerIcono.png';
+    var posActualIcono =    'img/mapa/posActualIcono.png';
+    var posActualPunto;
+    var posActualMostrado = 0;
+    var infoBubble1;
+    var contenidosInfoBubbleArray = new Array();
+    
+    var latitud = 28.529760;
+    var longitud = -16.359320;
 
-var latitud = 28.529760;
-var longitud = -16.359320;
-
-//------mapa
+//----mapa. métodos relacionados con inicializar y mostrar los distintos mapas en la #PaginaLocalizacion
 {
-     /*
-     * crearMapa. crea un mapa sin o existiese (singleton)
+    /**
+     * crearMapa. crea un mapa si no existe. tambien inicializa los eventos del mismo
      */
     function crearMapa(){
-        console.log(' ## crear mapa');
         posActualPunto = ObtenerPunto(latitud, longitud);
         if(map==null){
             var mapOptions = {
@@ -36,7 +39,7 @@ var longitud = -16.359320;
                     mapTypeId : tipoMapa,
                     streetViewControl: false
                 };
-            //Incializar el mapa y los eventos
+
             map = new google.maps.Map(document.getElementById("map_canvas"),
                                       mapOptions);
             google.maps.event.addListener(map, 'click', quitarInfoBubble);
@@ -48,11 +51,10 @@ var longitud = -16.359320;
             );
         }    
     }
-    /*
-     * mostrarMapaEspecifico. muestra el mapa General con todos los markers
+    /**
+     * mostrarMapaGeneral.  muestra el mapa que alberga los marcadores de todos y cada uno de los comercios.
      */
     function mostrarMapaGeneral(event){
-        console.log('   mostrar mapa general');
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios= 14;
@@ -62,14 +64,11 @@ var longitud = -16.359320;
             if(jQuery){            
                 $('#PaginaLocalizacion').bind('pageshow', function(e) {
                     // Carga el preload
-                    console.log('cargar preload');
-                    $.mobile.loading('show', {
-                        text : 'cargando',
-                        textVisible : true,
-                        textonly : true
-                    });
+                    $.mobile.loading('show', {text : 'cargando',textVisible : true,textonly : true});
+                        
                         crearMapa(); 
                         aniadirMarcadoresComercios(event);
+                    
                     // Se quita el loading y se desvincula el evento 'pageshow'
                     $.mobile.loading('hide');
                     $('#PaginaLocalizacion').unbind('pageshow');
@@ -77,50 +76,48 @@ var longitud = -16.359320;
                 $.mobile.changePage($('#PaginaLocalizacion'));
             }else{
                 console.log('el problema es que jquery no esta activado');
+                 //intenta importar el script de jquery manualmente (prueba)
                  var newscript = document.createElement('script');
                      newscript.type = 'text/javascript';
                      newscript.async = true;
                      newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
                      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
             }
-            console.log('despues del pageshow');
         }else{
             MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
         PararEvento(event);
     }
-    /*
+    
+    /**
      * mostrarMapaEspecifico.   muestra el mapa de un solo comercio
      */
     function mostrarMapaEspecifico(event,id){
-        console.log('   mostrar mapa especifico');
         if(ComprobarConexion()){
             reiniciarMapa();
             zoomComercios=12;
             if(jQuery){            
                 $('#PaginaLocalizacion').bind('pageshow', function(e) {
-                // Carga el preload
-                $.mobile.loading('show', {
-                    text : 'cargando',
-                    textVisible : true,
-                    textonly : true
-                });
-                crearMapa(); 
-                aniadirMarcadorComercio(event, id);
-                // Se quita el loading y se desvincula el evento 'pageshow'
-                $.mobile.loading('hide');
-                $('#PaginaLocalizacion').unbind('pageshow');
+                    // Carga el preload
+                    $.mobile.loading('show', { text : 'cargando', textVisible : true, textonly : true});
+                    
+                        crearMapa(); 
+                        aniadirMarcadorComercio(event, id);
+                    
+                    // Se quita el loading y se desvincula el evento 'pageshow'
+                    $.mobile.loading('hide');
+                    $('#PaginaLocalizacion').unbind('pageshow');
                 });
                 $.mobile.changePage($('#PaginaLocalizacion'));
             }else{
                 console.log('el problema es que jquery no esta activado');
+                 //intenta importar el script de jquery manualmente (prueba)
                  var newscript = document.createElement('script');
                      newscript.type = 'text/javascript';
                      newscript.async = true;
                      newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
-                     (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
+                     (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);            
             }
-             console.log('despues del pageshow');
         }else{
             MostrarAlerta('No dispone de conexión a Internet.', 'ZCA dice:', 'vale');
         }
@@ -131,21 +128,19 @@ var longitud = -16.359320;
      * reiniciarMapa.   pone todas las variables a null, borra todo los que se muestra en el mapa
      */
     function reiniciarMapa(){
-        console.log('   reiniciar mapa');
-        quitarTodosLosMarcadores(); //borra los marcadores del mapa y dejan de mostrarse
-        quitarInfoBubble();         //cierra el infobubble, borra el infobubble y su configuración
+        //borra los marcadores del mapa y dejan de mostrarse
+        quitarTodosLosMarcadores(); 
+        quitarInfoBubble();         //cierra y pone a null el bubble
         map= null;
         contenidosInfoBubbleArray = new Array();
     }
  }
-
-//------marcadores
+//----marcadores.   métodos relacionados con la gestión de marcadores (crear, eliminar)
 {
     /**
      * aniadirMarcadoresComercios.    obtiene la información de los marcadores y ejecuta las funciones que situan sus marcadores y almacenan su informacion
      */
      function aniadirMarcadoresComercios(event) {
-            console.log('   añadir marcadores de comercios');
             for ( var z = 1; z <=4; z++) {
                 $.getJSON(urlObtenerComerciosPorZona + "?callback=?",
                           {
@@ -161,21 +156,19 @@ var longitud = -16.359320;
                                               var punto = ObtenerPunto(item2['Latitud'],item2['Longitud']);
                                               AniadirMarcador(punto,nombreComercio,markerIcono ,10);
                                               almacenarContenidoInfoBubble(nombreComercio, item2['Direccion'], nombrezona, item2['Id'],item2['Imagen'] );
-                                              console.log('   cada marcador que se añade');
                                           });
                                       }
                                   });
                               }
                           });
             }
-        }        
-    }
+    }        
+
     /**
      * aniadirMarcadorComercio.       obtiene la información del marcador y ejecuta las funciones que situan sus marcadores y almacenan su informacion
      * @param id.       el id del comercio para realizar la consulta
      */
      function aniadirMarcadorComercio(event, id){
-        console.log('   añadir un marcador');
         var puntoCom;
         var latCom, longCom;
         if (ComprobarConexion()) { 
@@ -190,7 +183,6 @@ var longitud = -16.359320;
                                     var punto = ObtenerPunto(item['Latitud'],item['Longitud']);
                                     almacenarContenidoInfoBubble(nombreComercio, item['Direccion'], nombrezona, id,item['Imagen'] );
                                     AniadirMarcador(punto,nombreComercio,markerIcono,10);
-                                    console.log('   se añade el marcador');
                         });
                     }}
             );
@@ -217,14 +209,13 @@ var longitud = -16.359320;
     }
     
     /**
-     * mostrarPosActual.    obtiene la latitud y longitud actual y añade el marcador necesario
+     * mostrarPosActual.    establece la posicion que recibe por parámetro como la actual del dispositivo. 
+     * No redibuja este marcador a menos que ya se haya inicializado y se haya movido
      */
      function mostrarPosActual(position) {
-        console.log('mostra pos actual');
         if(posActualMostrado==0 || latitud==position.coords.latitude && longitud==position.coords.longitude){
             latitud = position.coords.latitude;
             longitud = position.coords.longitude;
-            console.log(latitud+'<-- latitud || longitud-->'+longitud);
             posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
             AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
             posActualMostrado=1;
@@ -233,7 +224,6 @@ var longitud = -16.359320;
             console.log("no es el primero o se ha movido");
             latitud = position.coords.latitude;
             longitud = position.coords.longitude;
-            console.log(latitud+'<-- latitud || longitud-->'+longitud);
             posActualPunto= ObtenerPunto(position.coords.latitude,position.coords.longitude);
              QuitarUltimoMarcador();
             AniadirMarcador(posActualPunto, "Posición Actual",posActualIcono, 10);
@@ -262,8 +252,8 @@ var longitud = -16.359320;
     }
     
     /**
-     * QuitarUltimoMarcador. Elimina el último marcado añadido a la lista de
-     * marcadores (normalmente la posición actual).
+     * QuitarUltimoMarcador. Elimina el último marcado añadido a la lista de marcadores.
+     * éste punto suele ser la posición actual ya que es el último en ser añadido
      */
     function QuitarUltimoMarcador() {
         if (markersArray !=null && markersArray.length > 0) {
@@ -272,10 +262,8 @@ var longitud = -16.359320;
         }
     }
     
-    
     /**
-     * QuitarTodos los Marcadores. Elimina todos los marcadores del mapa //si no
-     * funciona es el emulador
+     * QuitarTodosLosMarcadores. Elimina todos los marcadores del mapa
      */
     function quitarTodosLosMarcadores() {
         console.log(' quitar todos los marcadores');
@@ -286,111 +274,106 @@ var longitud = -16.359320;
             }
         }
     }
+}    
+//----infoBubble.   métodos relacionados con la gestión de los tooltips de información mostrados en el mapa
+{
+    
+    /**
+     * mostrarInfoBubble. se ejecuta al hacer clic en uno de los marcadores. 
+     * fabrica y muestra un infobubble sobre el marcador correspondiente con la información del comercio que representa
+     */
+    function mostrarInfoBubble() {
+        var encontrado = false;
+        var marker = this;
+        var infoBubbleOptions={
+            map : map,
+            position : marker.getPosition(),
+            shadowStyle : 1,
+            padding : 0,
+            maxWidth : mediaW,
+            maxHeight : mediaH,
+            minWidth : mediaW,
+            minHeight : mediaH,
+            backgroundColor : '#F2C891',
+            borderRadius : 10,
+            arrowSize : 10,
+            borderWidth : 1,
+            borderColor : 'white',
+            disableAutoPan : false,
+            hideCloseButton : true,
+            arrowPosition : 30,
+            backgroundClassName : 'phoney',
+            arrowStyle : 1
+        };
+        if(infoBubble1!=null){
+            infoBubble1.close();
+        }
+        if (marker.title != "Posición Actual") {
+            //solo los marcadores que no son la posición actual son vinculados a un marker
+            for (var i = 0; i < markersArray.length; i++) {
+                if (marker.title == contenidosInfoBubbleArray[i][0]) {
+                    infoBubble1 = new InfoBubble(infoBubbleOptions);
+                    infoBubble1.setContent(contenidosInfoBubbleArray[i][1]);
+                    encontrado = true;
+                }
+                if (encontrado) {
+                    i = markersArray.length;
+                    infoBubble1.open(map, marker);
+                }
+            }
+        }
+    }
+    /*
+     * almacenarContenidoInfoBubble.    crear el contenido html del infobubble con la información recibida y almacena el contenido en el array contenidosInfoBubblesArray
+     */
+    function almacenarContenidoInfoBubble(nombreComercio, direccion, nombrezona, id, imagen){
+        var miniatura, contenido;
+        
+        if(!esNulo(imagen)){
+            miniatura = '<img src="'+imagen+'"/>';
+        }
+        else{
+            miniatura = '<img src="img/comercios/sinImagen.jpg"/>';
+        }
+        
+        contenido = "<div id='tooltip'>"
+        + "<a href='javascript:;' onClick='infoBubble1.close();' onTouchStart='infoBubble1.close();'>"
+        +    "<div id='cerrarBubble'/>X</div>"
+        + "</a>"
+        + "<div id='titulodiv'><h3 id='titulotooltip'>"
+        + nombreComercio
+        + "</h3>"
+        + "</div>"
+        + "<div id='miniatura'>"
+        + miniatura
+        + "</div>"
+        + "<div id='detallescomercio'>"
+        + "<p id='parrafotooltip'>"
+        + direccion
+        + "&nbsp;&nbsp;</br>"
+        + nombrezona
+        + "</br>"
+        + "<a  id='enlacetooltip' href='javascript:;' onClick='CargarDetallesComercio(event,"
+        + id
+        + ")'>Ver detalles...</a></p>"
+        + "</div>"
+        + "</div>";
+        contenidosInfoBubbleArray.push([nombreComercio,contenido]);
+    }
+    
+     
+    /**
+     * quitarInfoBubble.    si existe un infobubble lo cierra y lo pone a null
+     */
     function quitarInfoBubble(){
         if(infoBubble1!=null){
             infoBubble1.close();
         }
         infoBubble1= null;
-    }
+    } 
+}
 
-//----infoBubble
-/**
- * mostrarInfoBubble. es el evento on click de los marcadores. cierra si hubiese alguno abierto, crea un nuevo infobubble con el contenido correspondiente al marker y lo muestra en el mapa
- */
-{
-function mostrarInfoBubble() {
-    var encontrado = false;
-    var marker = this;
-    var infoBubbleOptions={
-        map : map,
-        position : marker.getPosition(),
-        shadowStyle : 1,
-        padding : 0,
-        maxWidth : mediaW,
-        maxHeight : mediaH,
-        minWidth : mediaW,
-        minHeight : mediaH,
-        backgroundColor : '#F2C891',
-        borderRadius : 10,
-        arrowSize : 10,
-        borderWidth : 1,
-        borderColor : 'white',
-        disableAutoPan : false,
-        hideCloseButton : true,
-        arrowPosition : 30,
-        backgroundClassName : 'phoney',
-        arrowStyle : 1
-    };
-    if(infoBubble1!=null){
-        infoBubble1.close();
-    }
-    if (marker.title != "Posición Actual") {
-        for (var i = 0; i < markersArray.length; i++) {
-            if (marker.title == contenidosInfoBubbleArray[i][0]) {
-                infoBubble1 = new InfoBubble(infoBubbleOptions);
-                infoBubble1.setContent(contenidosInfoBubbleArray[i][1]);
-                encontrado = true;
-            }
-            if (encontrado) {
-                i = markersArray.length;
-                infoBubble1.open(map, marker);
-            }
-        }
-    }
-}
-/*
- * almacenarContenidoInfoBubble.    crear el contenido html del infobubble con la información recibida y almacena el contenido en el array contenidosInfoBubblesArray
- */
-function almacenarContenidoInfoBubble(nombreComercio, direccion, nombrezona, id, imagen){
-    var miniatura, contenido;
-    
-    if(!esNulo(imagen)){
-        miniatura = '<img src="'+imagen+'"/>';
-    }
-    else{
-        miniatura = '<img src="img/comercios/sinImagen.jpg"/>';
-    }
-    
-    contenido = "<div id='tooltip'>"
-    + "<a href='javascript:;' onClick='infoBubble1.close();' onTouchStart='infoBubble1.close();'>"
-    +    "<div id='cerrarBubble'/>X</div>"
-    + "</a>"
-    + "<div id='titulodiv'><h3 id='titulotooltip'>"
-    + nombreComercio
-    + "</h3>"
-    + "</div>"
-    + "<div id='miniatura'>"
-    + miniatura
-    + "</div>"
-    + "<div id='detallescomercio'>"
-    + "<p id='parrafotooltip'>"
-    + direccion
-    + "&nbsp;&nbsp;</br>"
-    + nombrezona
-    + "</br>"
-    + "<a  id='enlacetooltip' href='javascript:;' onClick='CargarDetallesComercio(event,"
-    + id
-    + ")'>Ver detalles...</a></p>"
-    + "</div>"
-    + "</div>";
-    contenidosInfoBubbleArray.push([nombreComercio,contenido]);
-} 
-}
-//-------------------------------
-/**
- * obtenerNombreZona. devuelve un valor string con el nombre de la zona
- * @param Id        id de la zona 
- */
-function obtenerNombreZona(Id){
-    var nombrezona = "";
-    switch (Id) {
-        case 1: nombrezona = 'Tejina';                  break;
-        case 2: nombrezona = 'Valle de Guerra';         break;
-        case 3: nombrezona = 'Punta del Hidalgo';       break;
-        case 4: nombrezona = 'Bajamar';                 break;
-    }
-    return nombrezona;
-}
+
 /**
  * error.   emite el codigo de error y el mensaje
  */

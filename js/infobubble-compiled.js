@@ -1,3 +1,5 @@
+/**INFOBUBBLE-COMPILED.JS**/
+    //Este script provee de las burbujas de información mostradas al pulsar un marcador del mapa
 (function(){
 var b=void 0,g;
 function k(a){this.extend(k,google.maps.OverlayView);this.b=[];this.d=null;this.g=100;this.m=!1;a=a||{};if(a.backgroundColor==b)a.backgroundColor=this.z;if(a.borderColor==b)a.borderColor=this.A;if(a.borderRadius==b)a.borderRadius=this.B;if(a.borderWidth==b)a.borderWidth=this.C;if(a.padding==b)a.padding=this.F;if(a.arrowPosition==b)a.arrowPosition=this.u;a.disableAutoPan==b&&(a.disableAutoPan=!1);a.disableAnimation==b&&(a.disableAnimation=!1);if(a.minWidth==b)a.minWidth=this.D;if(a.shadowStyle==b)a.shadowStyle=

@@ -1,7 +1,14 @@
+//FAVORITOS. gestiona todo lo referente a los favoritos y la #PaginaFavoritos
+
+
+/**--       PROPIEDADES      --**/
 var favoritosCargados = false;
 var listaFavoritos = new Array();
 
 
+/**
+ *  mostrarFavoritos.   imprime por consola la lista de favoritos si esta no es nula y también los muestra en la interfaz de la aplicación
+ */
 function mostrarFavoritos(){
     if(listaFavoritos!=null){
         console.log('-Tabla Favoritos-------------');
@@ -14,7 +21,7 @@ function mostrarFavoritos(){
         console.log('listaFavoritos = vacia');
     }
     
-    // Actualiza la lista con los favoritos
+    // Actualiza la lista de favoritos de la #PaginaFavoritos
     $('#lstFavoritos').empty();
     for (var x=0; x<listaFavoritos.length; x++) {
         $('#lstFavoritos').append('<li>'+'<a href="javascript:;" onClick="CargarDetallesComercio(event,'+listaFavoritos[x].Id+')">'+ 
@@ -30,7 +37,37 @@ function mostrarFavoritos(){
 
 
 /**
- * ConsultarFavoritos. 
+ * agregarQuitarFavorito. agrega un comercio a los favoritos y cambia el color del botón al pulsar el botón favorito en la página de su detalle.
+ * @param: Id Identificaciónn del comercio que se desea agregar a favoritos
+ */
+function agregarQuitarFavorito(event, Id){
+    var nombreItem;
+    $.getJSON(urlObtenerComerciosPorId + "?callback=?",{'Id': Id},
+              function(data){
+                  if (data){
+                      $.each(data, function(i, item){
+                          nombreItem = item['NombreComercio'];
+                          if(!esFavorito(nombreItem)){
+                              console.log('agregando favorito');
+                              insertarFavorito(Id, nombreItem);
+                              $('#favoritobtn a > span').addClass('marcado');
+                              
+                          }else{
+                              console.log('eliminando favorito');
+                              eliminarFavorito(nombreItem);
+                              $('#favoritobtn a > span').removeClass('marcado');
+                          }
+                      });
+                  }
+              }
+             );
+    PararEvento(event);
+    $.mobile.loading('hide');
+    $.mobile.changePage($('#PaginaDetalleComercio'));
+}
+
+/**
+ * obtenerFavoritos.    a partir de la consulta obtine una lista que posteriormente pasa por parámetro a la función listarFavoritos
  */
 function obtenerFavoritos() {
     ZCABD.transaction(
@@ -41,7 +78,7 @@ function obtenerFavoritos() {
 }
 
 /**
- * listarFavoritos. recibe el resultado de la consulta a la tabla favoritos y lo almacena en una lista
+ * listarFavoritos. recibe el resultado de la consulta efectuada por obtenerFavoritos() y la almacena en el array auxiliar listaFavoritos
  * @params  tx y results
  */
 function listarFavoritos(tx, results) {
@@ -76,7 +113,7 @@ function insertarFavorito(id, nombreComercio) {
             ZCABD.transaction(
                 function insertar(tx) {
                     tx.executeSql("INSERT INTO FAVORITOS (Id, nombreComercio) VALUES("+id+",'"+ $.trim(nombreComercio)+"')");               
-                }, errorBD, oktx('DB - Insertado:'+nombreComercio));
+                }, errorBD, oktx('favoritos - Insertado:'+nombreComercio));
         }catch(e){
             e.message();
         }
@@ -94,14 +131,14 @@ function esFavorito(nom){
     for(i = 0; i<listaFavoritos.length; i++){
         if(listaFavoritos[i].nombreComercio==nom){
             existe=true;
-            console.log('BD - esFavorito: si');
         }
     }
     return existe;
 }
 
 /**
- *  eliminarFavorito. 
+ *  eliminarFavorito.   si el comercio recibido es favorito lo elimina de la base de datos por su nombre. 
+ *  También copia todos los favoritos que no son dicho comercio y los amacena en una tabla auxiliar que después igual a listaFavoritos
  */ 
 function eliminarFavorito(nombreComercio) {
     var temp;
@@ -109,19 +146,19 @@ function eliminarFavorito(nombreComercio) {
     if(esFavorito(nombreComercio)) {
         ZCABD.transaction(function(tx) {
             tx.executeSql("DELETE FROM FAVORITOS WHERE nombreComercio like '"+nombreComercio+"'");
-        }, errorBD, oktx('DB - Eliminado:'+nombreComercio));
+        }, errorBD, oktx('favoritos - Eliminado:'+nombreComercio));
         
         for (i = 0; i < listaFavoritos.length; i++){
             temp = listaFavoritos[i];
+            
             console.log('lista'+temp.nombreComercio.toUpperCase());
             console.log('comercio'+$.trim(nombreComercio).toUpperCase());
+            
             if (temp.nombreComercio.toUpperCase() != $.trim(nombreComercio).toUpperCase()){
                 listaTemp.push(listaFavoritos[i]);
             }
         }
-        console.log(listaFavoritos+'<--favoritos || temporal-->'+listaTemp);
         listaFavoritos = listaTemp;
-        
         mostrarFavoritos();
     }
 }
