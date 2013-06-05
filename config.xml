@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.karonte.zcanordeste"
@@ -94,7 +94,7 @@ Karonte. Servicios en Internet. S.L.
 <access subdomains="true" origin="https://*.akamaihd.net"/>
 <!-- Propiedades habilitadas -->
 <feature name="http://api.phonegap.com/1.0/geolocation"/>
-
+<feature name="http://api.phonegap.com/1.0/file"/>
 <!-- Plugins necesarios -->
 <!-- Almacenamiento y geolocalización para Android -->
 <plugin name="Storage"             value="org.apache.cordova.Storage" />
