@@ -324,10 +324,12 @@
             //-lancen la función al abrirse
             //-se cierren automáticamente al haber terminado con el proceso
     
+    //http://stackoverflow.com/questions/15666258/phonegap-build-open-external-page-in-inappbrowser-or-childbrowser-with-no-tool
+    //http://tar.mx/log/inappbrowser-esa-nueva-maravilla-de-phonegap/
+    
     
     /**
      * SOLUCIÓN AL PROBLEMA DE CERRAR ESTAS PÁGINAS
-     @ http://tar.mx/log/inappbrowser-esa-nueva-maravilla-de-phonegap/
      Lo que hago, es un truco como el siguiente: pongo un botón en la ventana inAppBrowser o una liga, que vaya a una hoja en blanco llamada sigraciasbye.html. 
      Algo como <a href=”sigraciasbye.html”> cerrar ventana </a> y tengo un código como este:
 
@@ -345,6 +347,39 @@
      */
      
      
+     /** 
+      ESTE ES OTRO EJEMPLO QUE TAMPOCO ENTIENDO
+      I open the browser with this:
+        <a href="#" onclick="openInAppBrowserBlank('http://www.mypage.asp?userId=1');">open InAppBrowser</a>
+        
+        var ref = null;
+        function openInAppBrowserBlank(url)
+        {
+            try {
+        ref = window.open(encodeURI(url),'_blank','location=no'); //encode is needed if you want to send a variable with your link if not you can use ref = window.open(url,'_blank','location=no');
+                 ref.addEventListener('loadstop', LoadStop);
+                 ref.addEventListener('exit', Close);
+            }
+            catch (err)    
+            {
+                alert(err);
+            }
+        }
+        function LoadStop(event) {
+                 if(event.url == "http://www.mypage.com/closeInAppBrowser.html"){
+        // alert("fun load stop runs");
+                     ref.close();
+                 }    
+            }
+        function Close(event) {
+                 ref.removeEventListener('loadstop', LoadStop);
+                 ref.removeEventListener('exit', Close);
+            } 
+        
+        And to close the InAppBrowser from the page that I opened in the browser(http://www.mypage.asp) I have a button-link like this.
+        
+        <a href="http://www.mypage.com/closeInAppBrowser.html"></a>
+      */
     /**
      *loginFacebookBrowser. abre un nuevo inAppBrowser con una pagina web que permite loguearse en facebook
      */
