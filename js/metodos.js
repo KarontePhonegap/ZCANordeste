@@ -324,12 +324,33 @@
             //-lancen la función al abrirse
             //-se cierren automáticamente al haber terminado con el proceso
     
+    
+    /**
+     * SOLUCIÓN AL PROBLEMA DE CERRAR ESTAS PÁGINAS
+     @ http://tar.mx/log/inappbrowser-esa-nueva-maravilla-de-phonegap/
+     Lo que hago, es un truco como el siguiente: pongo un botón en la ventana inAppBrowser o una liga, que vaya a una hoja en blanco llamada sigraciasbye.html. 
+     Algo como <a href=”sigraciasbye.html”> cerrar ventana </a> y tengo un código como este:
+
+                var ventana = window.open('http://myserver.com/','_blank','location=no');
+                ventana.addEventListener('loadstart',cerrado);
+                
+                //luego, la función:
+                function cerrado(evento) {
+                   if(evento.url.match(/sigraciasbye/)) {
+                      ventana.close();
+                      ventana.removeEventListener('loadstart');
+                   }
+                }
+     *
+     */
+     
+     
     /**
      *loginFacebookBrowser. abre un nuevo inAppBrowser con una pagina web que permite loguearse en facebook
      */
      function loginFacebookBrowser(event){
         console.log('pagina comercios '+$('#PaginaComercios').val());
-        var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=yes');
+        var ref = window.open('http://www.yoamotejina.com/facebook/login.html', '_blank','location=no');
         ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
         ref.addEventListener('loadstop', function(event) { console.log(event.type + ' - ' + event.url); } );
         ref.addEventListener('exit', function(event) { console.log(event.type); } );
@@ -340,7 +361,7 @@
       *logoutFacebookBrowser.   abre un nuevo inAppBrowser con una página que permite cerrar sesión en facebook
       */
      function logoutFacebookBrowser(event){
-        var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=yes');
+        var ref = window.open('http://www.yoamotejina.com/facebook/logout.html', '_blank','location=no');
         ref.addEventListener('loadstart', function(event) { console.log(event.type + ' - ' + event.url); } );
         ref.addEventListener('loadstop', function(event) { 
                                 console.log(event.type + ' - ' + event.url);
