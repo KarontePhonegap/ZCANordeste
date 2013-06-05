@@ -39,7 +39,5 @@ function okBD() {
  * @param   mensaje.    el mensaje personalizado del método que invoca este otro
  */
 function oktx(mensaje){
-        //quiero recuperar la lista
         console.log(mensaje);
-        //mostrarFavoritos();
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.karonte.zcanordeste"
@@ -19,8 +19,8 @@ Karonte. Servicios en Internet. S.L.
 <preference name="android-installLocation" value="preferExternal" />
 <preference name="stay-in-webview"         value="true" />
 <preference name="phonegap-version"        value="2.5.0" /> <!----he cambiado esto----->
-<preference name="target-device" value="universal" />
-<preference name="fullscreen" value="true" />
+<preference name="target-device"           value="universal" />
+<preference name="fullscreen"              value="true" />
 <icon src="icon.png"/>
 
 <!-- Iconos -->
@@ -47,10 +47,10 @@ Karonte. Servicios en Internet. S.L.
 -->
 
 <!-- Android -->
-<!--<gap:splash src="appconfig/splash/android/splash320x426.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="appconfig/splash/android/splash320x426.png" gap:platform="android" gap:density="ldpi" />
 <gap:splash src="appconfig/splash/android/splash320x470.png" gap:platform="android" gap:density="mdpi" />
 <gap:splash src="appconfig/splash/android/splash480x640.png" gap:platform="android" gap:density="hdpi" />
-<gap:splash src="appconfig/splash/android/splash720x960.png" gap:platform="android" gap:density="xhdpi" />-->
+<gap:splash src="appconfig/splash/android/splash720x960.png" gap:platform="android" gap:density="xhdpi" />
 
  <gap:plugin name="FacebookConnect">
    <param name="APP_ID" value="377139305740929" />
@@ -95,6 +95,9 @@ Karonte. Servicios en Internet. S.L.
 <!-- Propiedades habilitadas -->
 <feature name="http://api.phonegap.com/1.0/geolocation"/>
 <feature name="http://api.phonegap.com/1.0/file"/>
+
+
+
 <!-- Plugins necesarios -->
 <!-- Almacenamiento y geolocalización para Android -->
 <plugin name="Storage"             value="org.apache.cordova.Storage" />
